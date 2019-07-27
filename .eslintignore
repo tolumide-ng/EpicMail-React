@@ -1,6 +1,4 @@
 /node_modules
 /dist
 /coveralls
-node_modules
 package-lock.json
-.nyc_output
