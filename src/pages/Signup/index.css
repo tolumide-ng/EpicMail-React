@@ -1,0 +1,11 @@
+body {
+  background: #282b40;
+}
+
+.form_body {
+  background: #f1f2ec;
+}
+
+.button:focus {
+  outline: 0;
+}
