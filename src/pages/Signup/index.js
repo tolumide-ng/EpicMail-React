@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
+import { signupAction } from '../../store/actions/Signup';
 
 import SignupSchema from './schema';
 
-const SignupForm = () => (
+const SignupForm = ({isLoading, error, isCompleted, signUp }) => (
   <div>
     <h1>Signup</h1>
     <Formik
@@ -18,6 +20,7 @@ const SignupForm = () => (
       validationSchema={SignupSchema}
       onSubmit={values => {
         // same shape as initial values
+        signUp(values);
         console.log(values);
       }}
     >
@@ -152,4 +155,14 @@ const SignupForm = () => (
   </div>
 );
 
-export default SignupForm;
+const mapStateToProps = (state) => ({
+  isLoading: state.signupReducer.isLoading,
+  isCompleted: state.signupReducer.isCompleted,
+  error: state.signupReducer.error,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  signUp: (userData) => dispatch(signupAction(userData)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

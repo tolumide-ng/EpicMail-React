@@ -1,9 +1,8 @@
 import { hot } from 'react-hot-loader/root';
-import React from 'react';
-import Notifications from '../components/Notifications';
+import React, { Fragment } from 'react';
 
-import Signup from './Signup';
-// import LoginForm from './Login';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 
 const App = () => {
   return (

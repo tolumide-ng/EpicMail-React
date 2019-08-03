@@ -43,8 +43,13 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.s?(a|c)ss$/,
-        use: [MiniCssExtractWebpackPlugin.loader, 'css-loader', 'sass-loader']
+        test: /\.css$/,
+        use: [
+          MiniCssExtractWebpackPlugin.loader,
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader'
+        ]
       }
     ]
   }

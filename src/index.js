@@ -1,29 +1,21 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import Notification, { notify } from './components/Notifications';
-import './main.css';
+import { BrowserRouter, withRouter } from 'react-router-dom';
+import './styles/main.css';
 
-// import App from './pages/App';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import rootReducer from './reducers/rootReducer';
+import store from './store';
+import App from './App';
 
-const store = createStore(rootReducer);
+const AppithRouter = withRouter(App);
 
 const app = document.querySelector('#app');
 
 render(
   <Provider store={store}>
-    {/* <input
-      onClick={() => notify('the message')}
-      type="button"
-      value="Click me"
-    />
-    <Notification /> */}
-    <Login />
-    {/* <Signup /> */}
+    <BrowserRouter>
+      <AppithRouter />
+    </BrowserRouter>
   </Provider>,
   app
 );
