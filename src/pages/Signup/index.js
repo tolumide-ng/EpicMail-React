@@ -5,7 +5,7 @@ import { signupAction } from '../../store/actions/Signup';
 
 import SignupSchema from './schema';
 
-const SignupForm = ({isLoading, error, isCompleted, signUp }) => (
+const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
   <div>
     <h1>Signup</h1>
     <Formik
@@ -21,7 +21,7 @@ const SignupForm = ({isLoading, error, isCompleted, signUp }) => (
       onSubmit={values => {
         // same shape as initial values
         signUp(values);
-        console.log(values);
+        // console.log(values);
       }}
     >
       {({ errors, touched }) => (
@@ -155,14 +155,17 @@ const SignupForm = ({isLoading, error, isCompleted, signUp }) => (
   </div>
 );
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isLoading: state.signupReducer.isLoading,
   isCompleted: state.signupReducer.isCompleted,
-  error: state.signupReducer.error,
+  error: state.signupReducer.error
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  signUp: (userData) => dispatch(signupAction(userData)),
-})
+const mapDispatchToProps = dispatch => ({
+  signUp: userData => dispatch(signupAction(userData))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignupForm);

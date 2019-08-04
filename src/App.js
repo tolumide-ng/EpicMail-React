@@ -1,15 +1,13 @@
 import { hot } from 'react-hot-loader/root';
 import React, { Fragment } from 'react';
 
-import Signup from './pages/Signup';
-import Login from './pages/Login';
+import AppRouter from './components/AppRouter';
 
 const App = () => {
   return (
-    <div>
-      {/* <Login /> */}
-      <Signup />
-    </div>
+    <>
+      <AppRouter />
+    </>
   );
 };
 

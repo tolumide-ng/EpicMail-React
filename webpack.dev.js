@@ -1,3 +1,5 @@
+const Dotenv = require('dotenv-webpack');
+
 const path = require('path');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -13,13 +15,18 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/template.html'
-    })
+    }),
+    new Dotenv()
   ],
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', { loader: 'css-loader', options: { importLoaders: 1 } }, 'postcss-loader']
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader'
+        ]
       }
     ]
   }

@@ -1,8 +1,4 @@
-import {
-  SIGNUP_PENDING,
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILURE
-} from '../../actiontypes';
+import { LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAILURE } from '../../actiontypes';
 
 const INITIAL_STATE = {
   isLoading: false,
@@ -11,19 +7,19 @@ const INITIAL_STATE = {
   user: {}
 };
 
-const signupReducer = (state = INITIAL_STATE, { type, payload }) => {
+const loginReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case SIGNUP_PENDING:
+    case LOGIN_PENDING:
       return {
         ...state,
         ...payload
       };
-    case SIGNUP_SUCCESS:
+    case LOGIN_SUCCESS:
       return {
         ...state,
         ...payload
       };
-    case SIGNUP_FAILURE:
+    case LOGIN_FAILURE:
       return {
         ...state,
         ...payload
@@ -33,4 +29,4 @@ const signupReducer = (state = INITIAL_STATE, { type, payload }) => {
   }
 };
 
-export default signupReducer;
+export default loginReducer;

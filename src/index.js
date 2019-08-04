@@ -6,7 +6,7 @@ import './styles/main.css';
 
 import store from './store';
 import App from './App';
-
+ 
 const AppithRouter = withRouter(App);
 
 const app = document.querySelector('#app');
