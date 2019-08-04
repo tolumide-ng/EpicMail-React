@@ -1,7 +1,6 @@
 module.exports = {
   entry: {
-    main: './src/index.js',
-    vendor: './src/vendor.js'
+    main: './src/index.js'
   },
   module: {
     rules: [
@@ -18,13 +17,15 @@ module.exports = {
       },
       {
         test: /\.(svg|png|gif|jpeg|jpg)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[hash].[ext]',
-            outputPath: 'imgs'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash].[ext]',
+              outputPath: 'imgs'
+            }
           }
-        }
+        ]
       }
     ]
   }

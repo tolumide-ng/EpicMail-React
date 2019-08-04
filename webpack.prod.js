@@ -7,6 +7,7 @@ const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const common = require('./webpack.common');
 
 const PATHS = {
@@ -24,7 +25,8 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(),
     new PurgecssPlugin({
       paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true })
-    })
+    }),
+    new Dotenv()
   ],
   optimization: {
     minimizer: [
@@ -43,8 +45,13 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.s?(a|c)ss$/,
-        use: [MiniCssExtractWebpackPlugin.loader, 'css-loader', 'sass-loader']
+        test: /\.css$/,
+        use: [
+          MiniCssExtractWebpackPlugin.loader,
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader'
+        ]
       }
     ]
   }

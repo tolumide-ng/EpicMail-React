@@ -2,14 +2,12 @@ import './index.css';
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Link } from 'react-router-dom';
-import * as Yup from 'yup';
+import { connect } from 'react-redux';
+import LoginSchema from './schema';
+import { signupAction } from '../../store/actions/Signup';
+import { loginAction } from '../../store/actions/Login';
 
-const SignupSchema = Yup.object().shape({
-  username: Yup.string().required('username is required'),
-  password: Yup.string().required('password is required')
-});
-
-const LoginForm = () => (
+const LoginForm = ({ isLoading, error, isCompleted, login }) => (
   <div className="flex mt-20 mx-auto flex-col p-10 w-100 rounded justify-center">
     <Formik
       className="flex flex-col justify-center"
@@ -17,9 +15,11 @@ const LoginForm = () => (
         username: '',
         password: ''
       }}
-      validationSchema={SignupSchema}
+      validationSchema={LoginSchema}
       onSubmit={values => {
-        console.log(values);
+        // console.log(values);
+        login(values);
+        // console.log(values);
       }}
     >
       {({ errors, touched }) => (
@@ -76,4 +76,17 @@ const LoginForm = () => (
   </div>
 );
 
-export default LoginForm;
+const mapStateToProps = state => ({
+  isLoading: state.loginReducer.isLoading,
+  isCompleted: state.loginReducer.isCompleted,
+  error: state.loginReducer.error
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: userData => dispatch(loginAction(userData))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginForm);
