@@ -1,0 +1,13 @@
+body {
+  background: #282b40;
+  position: relative;
+  width: 100%;
+}
+
+.form_body {
+  background: #f1f2ec;
+}
+
+.button:focus {
+  outline: 0;
+}
