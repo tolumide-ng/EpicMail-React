@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getUser } from '../actions/Auth';
+import { getUser } from '../actions/auth';
 
 export const useSetUser = ({ dispatch }) => {
   useEffect(() => {

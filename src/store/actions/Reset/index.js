@@ -3,7 +3,7 @@ import {
   REQUEST_RESET_PENDING,
   REQUEST_RESET_SUCCESS,
   REQUEST_RESET_FAILURE
-} from '../../actiontypes';
+} from '../../actiontypes/auth';
 
 import config from '../../../config';
 

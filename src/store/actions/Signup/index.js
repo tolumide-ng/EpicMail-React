@@ -1,9 +1,11 @@
 import axios from 'axios';
+import * as Toastr from 'toastr';
+
 import {
   SIGNUP_PENDING,
   SIGNUP_FAILURE,
   SIGNUP_SUCCESS
-} from '../../actiontypes';
+} from '../../actiontypes/auth';
 import config from '../../../config';
 import { axiosCall, emailCheck, saveToLocalStorage } from '../../../utils';
 
@@ -23,6 +25,11 @@ export const signupSuccess = user => ({
     user,
     error: null
   }
+});
+
+export const setUser = user => ({
+  type: 'SET_USER',
+  payload: { isStarting: false, status: 'AuthenticationSuccessful', user }
 });
 
 export const signupFailure = error => ({
@@ -63,6 +70,7 @@ export const signupAction = ({
     dispatch(signupSuccess(user));
   } catch ({ response }) {
     const message = response.data.error || response;
+    Toastr.error(message);
 
     dispatch(signupFailure(message));
   }

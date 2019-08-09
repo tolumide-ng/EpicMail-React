@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import signupReducer from './Signup';
-import loginReducer from './Login';
+import authReducer from './auth';
 import requestResetReducer from './RequestReset';
+import composeMailReducer from './composeMail';
 
 const rootReducer = combineReducers({
-  signupReducer,
-  loginReducer,
-  requestResetReducer
+  authReducer,
+  requestResetReducer,
+  composeMailReducer
 });
 
 export default rootReducer;
