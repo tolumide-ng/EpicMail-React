@@ -16,9 +16,7 @@ const LoginForm = ({ isLoading, error, isCompleted, login }) => (
       }}
       validationSchema={LoginSchema}
       onSubmit={values => {
-        // console.log(values);
         login(values);
-        // console.log(values);
       }}
     >
       {({ errors, touched }) => (
