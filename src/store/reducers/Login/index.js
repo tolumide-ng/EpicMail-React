@@ -1,8 +1,7 @@
 import { LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAILURE } from '../../actiontypes';
 
 const INITIAL_STATE = {
-  isLoading: false,
-  isCompleted: false,
+  status: 'rest',
   error: null,
   user: {}
 };

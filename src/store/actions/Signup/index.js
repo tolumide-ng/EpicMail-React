@@ -5,28 +5,31 @@ import {
   SIGNUP_SUCCESS
 } from '../../actiontypes';
 import config from '../../../config';
+import { axiosCall, emailCheck, saveToLocalStorage } from '../../../utils';
 
 export const signupPending = () => ({
   type: SIGNUP_PENDING,
   payload: {
-    isLoading: true
+    status: 'AuthenticationLoading',
+    user: {},
+    error: null
   }
 });
 
 export const signupSuccess = user => ({
   type: SIGNUP_SUCCESS,
   payload: {
-    isLoading: false,
-    isCompleted: true,
-    user
+    status: 'AuthenticationSuccessful',
+    user,
+    error: null
   }
 });
 
 export const signupFailure = error => ({
   type: SIGNUP_FAILURE,
   payload: {
-    isLoading: false,
-    isCompleted: true,
+    status: 'AuthenticationFailure',
+    user: {},
     error
   }
 });
@@ -41,28 +44,26 @@ export const signupAction = ({
   dispatch(signupPending());
 
   try {
-    const response = await axios({
+    const response = await axiosCall({
+      path: 'auth/signup',
       method: 'post',
-      url: `${config.apiUrl}auth/signup`,
-      data: {
+      payload: {
         firstName,
         lastName,
         secondaryEmail,
-        email: `${email}@epicmail.com`,
+        email: emailCheck(email),
         password
       }
     });
-    const user = response.data.data[0];
+
+    const user = response[0];
+
+    saveToLocalStorage(user);
 
     dispatch(signupSuccess(user));
   } catch ({ response }) {
-    // Use a toaster for the if scenario's console
-    // if (!response) {
-    //   return console.log(
-    //     'please ensure you are conncted to a network provider'
-    //   );
-    // }
     const message = response.data.error || response;
+
     dispatch(signupFailure(message));
   }
 };

@@ -19,9 +19,7 @@ const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
       }}
       validationSchema={SignupSchema}
       onSubmit={values => {
-        // same shape as initial values
         signUp(values);
-        // console.log(values);
       }}
     >
       {({ errors, touched }) => (
