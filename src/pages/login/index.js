@@ -74,9 +74,7 @@ const LoginForm = ({ isLoading, error, isCompleted, login }) => (
 );
 
 const mapStateToProps = state => ({
-  isLoading: state.loginReducer.isLoading,
-  isCompleted: state.loginReducer.isCompleted,
-  error: state.loginReducer.error
+  error: state.authReducer.error
 });
 
 const mapDispatchToProps = dispatch => ({

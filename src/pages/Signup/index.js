@@ -154,9 +154,7 @@ const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
 );
 
 const mapStateToProps = state => ({
-  isLoading: state.signupReducer.isLoading,
-  isCompleted: state.signupReducer.isCompleted,
-  error: state.signupReducer.error
+  error: state.authReducer.error
 });
 
 const mapDispatchToProps = dispatch => ({

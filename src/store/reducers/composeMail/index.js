@@ -1,8 +1,8 @@
 import {
-  SIGNUP_PENDING,
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILURE
-} from '../../actiontypes';
+  COMPOSE_PENDING,
+  COMPOSE_SUCCESSFUL,
+  COMPOSE_FAILURE
+} from '../../actiontypes/messages';
 
 const INITIAL_STATE = {
   status: 'rest',
@@ -10,26 +10,26 @@ const INITIAL_STATE = {
   user: {}
 };
 
-const signupReducer = (state = INITIAL_STATE, { type, payload }) => {
+const composeMailReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case SIGNUP_PENDING:
+    case COMPOSE_PENDING:
       return {
         ...state,
         ...payload
       };
-    case SIGNUP_SUCCESS:
+    case COMPOSE_SUCCESSFUL:
       return {
         ...state,
         ...payload
       };
-    case SIGNUP_FAILURE:
+    case COMPOSE_FAILURE:
       return {
         ...state,
-        ...payload
+        payload
       };
     default:
       return state;
   }
 };
 
-export default signupReducer;
+export default composeMailReducer;
