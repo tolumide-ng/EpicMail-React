@@ -4,9 +4,14 @@ import { Formik, Form, Field } from 'formik';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ResetRequestSchema from './schema';
-import { resetRequestAction } from '../../store/actions/Reset';
+import { requestResetAction } from '../../store/actions/requestReset';
 
-const RequestResetForm = ({ isLoading, error, isCompleted, requestReset }) => (
+const RequestResetForm = ({
+  isLoading,
+  error,
+  isCompleted,
+  requestResetAction
+}) => (
   <div className="flex mt-20 mx-auto flex-col p-10 w-100 rounded justify-center">
     <Formik
       className="flex flex-col justify-center"
@@ -16,7 +21,7 @@ const RequestResetForm = ({ isLoading, error, isCompleted, requestReset }) => (
       }}
       validationSchema={ResetRequestSchema}
       onSubmit={values => {
-        resetRequest(values);
+        requestResetAction(values);
       }}
     >
       {({ errors, touched }) => (
@@ -58,13 +63,13 @@ const RequestResetForm = ({ isLoading, error, isCompleted, requestReset }) => (
 );
 
 const mapStateToProps = state => ({
-  isLoading: state.requestResetReducer.isLoading,
-  isCompleted: state.requestResetReducer.isCompleted,
+  requestResetStatus: state.requestResetReducer.requestResetStatus,
+  user: state.requestResetReducer.user,
   error: state.requestResetReducer.error
 });
 
 const mapDispatchToProps = dispatch => ({
-  requestReset: userData => dispatch(resetRequestAction(userData))
+  requestReset: userData => dispatch(requestResetAction(userData))
 });
 
 export default connect(

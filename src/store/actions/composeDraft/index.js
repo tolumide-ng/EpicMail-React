@@ -11,9 +11,7 @@ import {
 export const composeDraftPending = () => ({
   type: COMPOSEDRAFT_PENDING,
   payload: {
-    composedraftStatus: 'pending',
-    composedraftError: null,
-    composeDraftSuccess: null
+    composedraftStatus: 'pending'
   }
 });
 
@@ -21,8 +19,7 @@ export const composeDraftFailure = composedraftError => ({
   type: COMPOSEDRAFT_FAILURE,
   payload: {
     composedraftStatus: 'fail',
-    composedraftError,
-    composedraftSuccess: null
+    composedraftError
   }
 });
 
@@ -30,8 +27,7 @@ export const composeDraftSuccess = composedraftSuccess => ({
   type: COMPOSEDRAFT_SUCCESSFUL,
   payload: {
     composedraftStatus: 'success',
-    composedraftSuccess,
-    composedraftError: null
+    composedraftSuccess
   }
 });
 
@@ -59,7 +55,7 @@ export const composeDraftAction = ({
     });
 
     const { message: data } = response.data;
-    Toastr.success(message);
+    Toastr.success('Message saved as draft');
     dispatch(composeDraftSuccess(data));
   } catch ({ response }) {
     const errorMessage = response.data.error || response;

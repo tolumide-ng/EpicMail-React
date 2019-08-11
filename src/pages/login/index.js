@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoginSchema from './schema';
-import { loginAction } from '../../store/actions/Login';
+import { loginAction } from '../../store/actions/login';
 
 const LoginForm = ({ isLoading, error, isCompleted, login }) => (
   <div className="flex mt-20 mx-auto flex-col p-10 w-100 rounded justify-center">

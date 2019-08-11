@@ -1,4 +1,3 @@
-import axios from 'axios';
 import * as Toastr from 'toastr';
 
 import {

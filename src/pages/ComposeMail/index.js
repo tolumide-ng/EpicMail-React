@@ -88,6 +88,7 @@ export class ComposeMail extends Component {
                   <input
                     placeholder="recipient@epicmail.com"
                     name="recipient"
+                    type="email"
                     onChange={this.handleChange}
                     value={this.state.recipient}
                     className="mt-4 w-full h-10 p-2 pl-4 border border-gray-400 text-sm outline-none rounded-lg"
@@ -102,6 +103,7 @@ export class ComposeMail extends Component {
                   <input
                     placeholder="Subject"
                     name="subject"
+                    type="text"
                     value={this.state.subject}
                     onChange={this.handleChange}
                     className="mt-4 w-full h-10 p-2 pl-4 border border-gray-400 text-sm outline-none rounded-lg"
@@ -113,6 +115,7 @@ export class ComposeMail extends Component {
                   <textarea
                     placeholder="Your email here"
                     name="message"
+                    type="text"
                     value={this.state.message}
                     onChange={this.handleChange}
                     rows="10"
@@ -124,6 +127,7 @@ export class ComposeMail extends Component {
               <div className="flex justify-between mt-4">
                 <button
                   onClick={this.saveDraft}
+                  type="button"
                   name="draft"
                   className="bg-blue-500 text-white p-1 focus:bg-blue-700"
                 >
