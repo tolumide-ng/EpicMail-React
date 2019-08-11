@@ -1,4 +1,4 @@
-import { setUser } from '../Signup';
+import { setUser } from '../signup';
 
 export const getUser = () => dispatch => {
   /* istanbul ignore next */

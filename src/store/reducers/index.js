@@ -1,12 +1,20 @@
 import { combineReducers } from 'redux';
 import authReducer from './auth';
-import requestResetReducer from './RequestReset';
+import requestResetReducer from './requestReset';
 import composeMailReducer from './composeMail';
+import composeDraftReducer from './composeDraft';
+import sentMessagesReducer from './sentMessages';
+import deleteMessageReducer from './deleteMessage';
+import specificSentMessageReducer from './specificSentMessage';
 
 const rootReducer = combineReducers({
   authReducer,
   requestResetReducer,
-  composeMailReducer
+  composeMailReducer,
+  composeDraftReducer,
+  sentMessagesReducer,
+  deleteMessageReducer,
+  specificSentMessageReducer
 });
 
 export default rootReducer;

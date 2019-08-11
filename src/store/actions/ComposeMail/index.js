@@ -8,6 +8,8 @@ import {
   COMPOSE_FAILURE
 } from '../../actiontypes/messages';
 
+import { sentMessagesAction } from '../sentMessages';
+
 export const composePending = () => ({
   type: COMPOSE_PENDING,
   payload: {
@@ -34,6 +36,8 @@ export const composeSuccessful = composeSuccess => ({
     composeSuccess
   }
 });
+
+// export const compos
 
 export const composeMailAction = ({
   recipient: receiverEmail,
@@ -64,6 +68,10 @@ export const composeMailAction = ({
     Toastr.success(data);
 
     dispatch(composeSuccessful(data));
+
+    dispatch(sentMessagesAction());
+
+    // dispatch(setSentMessagesStatusToTrue())
 
     // const response = await fetch(`${config.apiUrl}messages/`, {
     //   method: 'post',

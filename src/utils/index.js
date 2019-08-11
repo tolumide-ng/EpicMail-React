@@ -1,3 +1,4 @@
+import React from 'react';
 import axios from 'axios';
 import config from '../config';
 
@@ -26,4 +27,41 @@ export const emailCheck = email => {
     return email;
   }
   return `${email}@epicmail.com`;
+};
+
+export const convertDate = date => {
+  if (Math.abs(new Date() - new Date('2019-08-10T21:01:32.362Z')) / 36e5 > 24) {
+    return `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`;
+  }
+  return `${Math.floor(
+    Math.abs(new Date() - new Date('2019-08-10T21:01:32.362Z')) / 36e5
+  )}hrs ago`;
+};
+
+export const limitReceiverLenght = email => {
+  return email.slice(0, 15);
+};
+
+export const displaySubject = ({ subject, message }) => {
+  // const newSubject = `${subject} - ${message}`.slice(0, 10);
+  // const thename = `${subject}&&&&&&&&&&${message}`.slice(0, 45);
+  // const thearr = thename.split('&&&&&&&&&&');
+  // return `<span><strong>${thearr[0]}</strong> - ${thearr[1]}</span>`;
+  if (subject.length > 30) {
+    return <strong>{subject.slice(0, 30)}</strong>;
+  }
+  if (subject.length < 15) {
+    return (
+      <span>
+        <strong>{subject}</strong>
+        <span> - </span>
+        {message && message.slice(0, 15)}
+      </span>
+    );
+  }
+  return (
+    <span>
+      <strong>{subject}</strong>
+    </span>
+  );
 };

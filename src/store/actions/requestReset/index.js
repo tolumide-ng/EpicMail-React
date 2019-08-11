@@ -10,15 +10,14 @@ import config from '../../../config';
 export const requestResetPending = () => ({
   type: REQUEST_RESET_PENDING,
   payload: {
-    isLoading: true
+    requestResetStatus: 'pending'
   }
 });
 
 export const requestResetSucces = user => ({
   type: REQUEST_RESET_SUCCESS,
   payload: {
-    isLoading: false,
-    isCompleted: true,
+    requestResetStatus: 'success',
     user
   }
 });
@@ -26,8 +25,7 @@ export const requestResetSucces = user => ({
 export const requestResetFailure = error => ({
   type: REQUEST_RESET_FAILURE,
   payload: {
-    isLoading: false,
-    isCompleted: true,
+    requestResetStatus: 'error',
     error
   }
 });

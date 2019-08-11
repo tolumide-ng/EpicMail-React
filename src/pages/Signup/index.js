@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
-import { signupAction } from '../../store/actions/Signup';
+import { signupAction } from '../../store/actions/signup';
 
 import SignupSchema from './schema';
 

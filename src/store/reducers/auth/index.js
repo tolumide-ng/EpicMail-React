@@ -7,14 +7,9 @@ import {
   SIGNUP_FAILURE
 } from '../../actiontypes/auth';
 
-const INITIAL_STATE = {
-  status: 'rest',
-  error: null,
-  isStarting: true,
-  user: {}
-};
+import initialState from '../../initialState';
 
-const authReducer = (state = INITIAL_STATE, { type, payload }) => {
+const authReducer = (state = initialState.auth, { type, payload }) => {
   switch (type) {
     case LOGIN_PENDING:
       return {
