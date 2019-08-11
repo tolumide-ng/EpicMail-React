@@ -8,7 +8,7 @@ import {
 import initialState from '../../initialState';
 
 const specificMessageReducer = (
-  state = initialState.specificMessage,
+  state = initialState.specificSentMessage,
   { type, payload }
 ) => {
   switch (type) {

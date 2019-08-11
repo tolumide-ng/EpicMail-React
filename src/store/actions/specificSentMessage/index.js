@@ -12,38 +12,40 @@ import {
 export const fetchSpecificSentMessagePending = () => ({
   type: FETCH_SPECIFICSENTMESSAGE_PENDING,
   payload: {
-    specificMessageStatus: 'pending'
+    specificSentMessageStatus: 'pending'
   }
 });
 
-export const fetchSpecificSentMessageSuccess = message => ({
+export const fetchSpecificSentMessageSuccess = specificSentMessage => ({
   type: FETCH_SPECIFICSENTMESSAGE_SUCCESS,
   payload: {
-    specificMessageStatus: 'success',
-    message
+    specificSentMessageStatus: 'success',
+    specificSentMessage
   }
 });
 
-export const fetchSpecificSentMessageFailure = error => ({
+export const fetchSpecificSentMessageFailure = specificSentMessageError => ({
   type: FETCH_SPECIFICSENTMESSAGE_FAILURE,
   payload: {
-    specificMessageStatus: 'failure',
-    message: null,
-    error
+    specificSentMessageStatus: 'failure',
+    specificSentMessage: null,
+    specificSentMessageError
   }
 });
 
 export const resetfetchSentStatus = () => ({
   type: RESET_FETCHSPECIFICSENTMESSAGE_STATUS,
   payload: {
-    specificSMessageStatus: 'rest'
+    specificSentMessageStatus: 'rest'
   }
 });
 
 export const fetchSpecificSentMessageAction = ({
-  messageId
+  messageId,
+  history
 }) => async dispatch => {
-  dispatch(fetchSpecificSentMessageFailure());
+  dispatch(fetchSpecificSentMessagePending());
+
   try {
     let user = localStorage.getItem('user');
     user = JSON.parse(user);
@@ -58,12 +60,10 @@ export const fetchSpecificSentMessageAction = ({
     });
 
     const { data } = await response.data;
-    console.log(
-      'this is the repsonse for a specific message fetching >>>>>>>>>>',
-      response
-    );
 
     dispatch(fetchSpecificSentMessageSuccess(data));
+
+    if (history) history.push(`/message/${messageId}`);
 
     dispatch(resetfetchSentStatus());
   } catch ({ response }) {

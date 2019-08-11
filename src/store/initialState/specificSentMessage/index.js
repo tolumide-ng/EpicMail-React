@@ -1,7 +1,7 @@
 export const specificSentMessage = {
-  specificMessageStatus: 'rest',
-  message: null,
-  error: null
+  specificSentMessageStatus: 'rest',
+  specificSentMessage: null,
+  specificSentMessageError: null
 };
 
 export default specificSentMessage;

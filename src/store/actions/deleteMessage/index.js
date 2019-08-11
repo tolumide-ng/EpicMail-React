@@ -11,7 +11,7 @@ import {
 
 export const deleteMessagePending = () => ({
   type: DELETEMESSAGE_PENDING,
-  deleteMessageStatus: 'pending'
+  payload: { deleteMessageStatus: 'pending' }
 });
 
 export const deletMessageFailure = error => ({
@@ -29,7 +29,11 @@ export const deleteMessageReset = () => ({
   payload: { deleteMessageStatus: 'rest' }
 });
 
-export const deleteMessageAction = ({ messageId }) => async dispatch => {
+export const deleteMessageAction = ({
+  messageId,
+  rerender,
+  history
+}) => async dispatch => {
   dispatch(deleteMessagePending());
 
   try {
@@ -49,6 +53,11 @@ export const deleteMessageAction = ({ messageId }) => async dispatch => {
 
     dispatch(deleteMessageSuccessful(data));
     Toastr.success(data);
+
+    if (rerender) {
+      history.push(`${rerender}`);
+    }
+
     dispatch(deleteMessageReset());
   } catch ({ response }) {
     const errorMessage = response.data.error;

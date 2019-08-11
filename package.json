@@ -72,7 +72,8 @@
     "prettier-eslint": "^9.0.0",
     "prettier-eslint-cli": "^5.0.0",
     "pretty-quick": "^1.11.1",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
@@ -89,7 +90,6 @@
     "purgecss-webpack-plugin": "^1.5.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-hot-loader": "^4.12.10",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",

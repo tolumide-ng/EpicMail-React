@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { sentMessagesAction } from '../../store/actions/sentMessages';
-import SentMessagesComponent from '../../components/SentMessages';
+import SentMessagesComponent from '../../components/sentMessages';
 
 const ViewSentMessages = ({
   user,
@@ -10,7 +10,8 @@ const ViewSentMessages = ({
   sentMessagesStatus,
   fetchSentMessages,
   fetchSentStatus,
-  deleteMessageStatus
+  deleteMessageStatus,
+  history
 }) => {
   useEffect(() => {
     if (
@@ -28,7 +29,11 @@ const ViewSentMessages = ({
         These are supposed to be your sent messages
         {sentMessages.length > 0 &&
           sentMessages.map(message => (
-            <SentMessagesComponent key={message.id} props={message} />
+            <SentMessagesComponent
+              key={message.id}
+              props={message}
+              history={history}
+            />
           ))}
       </div>
     </>
