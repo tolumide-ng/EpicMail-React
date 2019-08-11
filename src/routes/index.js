@@ -6,6 +6,7 @@ import Signup from '../pages/Signup';
 import Login from '../pages/Login';
 import RequestReset from '../pages/RequestReset';
 import ComposeMail from '../pages/ComposeMail';
+import SentMessages from '../pages/SentMessages';
 import Navbar from '../components/Navbar';
 
 const Routes = () => (
@@ -16,11 +17,8 @@ const Routes = () => (
     <Route exact path="/login" component={Login} />
     <Route exact path="/reset" component={RequestReset} />
     <Route exact path="/compose" component={ComposeMail} />
+    <Route exact path="/sent" component={SentMessages} />
   </Router>
 );
-
-// mapStateToProps = (state) => {
-
-// }
 
 export default Routes;

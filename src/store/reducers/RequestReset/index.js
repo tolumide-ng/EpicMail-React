@@ -4,13 +4,12 @@ import {
   REQUEST_RESET_FAILURE
 } from '../../actiontypes/auth';
 
-const INITIAL_STATE = {
-  status: 'rest',
-  error: null,
-  user: {}
-};
+import initialState from '../../initialState';
 
-const requestResetReducer = (state = INITIAL_STATE, { type, payload }) => {
+const requestResetReducer = (
+  state = initialState.requestReset,
+  { type, payload }
+) => {
   switch (type) {
     case REQUEST_RESET_PENDING:
       return {

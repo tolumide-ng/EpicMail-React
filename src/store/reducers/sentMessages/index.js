@@ -1,34 +1,34 @@
 import {
-  COMPOSE_PENDING,
-  COMPOSE_SUCCESSFUL,
-  COMPOSE_FAILURE
+  SENTMESSAGES_PENDING,
+  SENTMESSAGES_SUCCESSFUL,
+  SENTMESSAGES_FAILURE
 } from '../../actiontypes/messages';
 
 import initialState from '../../initialState';
 
-const composeMailReducer = (
-  state = initialState.composeMail,
+const sentMessagesReducer = (
+  state = initialState.sentMessages,
   { type, payload }
 ) => {
   switch (type) {
-    case COMPOSE_PENDING:
+    case SENTMESSAGES_PENDING:
       return {
         ...state,
         ...payload
       };
-    case COMPOSE_SUCCESSFUL:
+    case SENTMESSAGES_SUCCESSFUL:
       return {
         ...state,
         ...payload
       };
-    case COMPOSE_FAILURE:
+    case SENTMESSAGES_FAILURE:
       return {
         ...state,
-        payload
+        ...payload
       };
     default:
       return state;
   }
 };
 
-export default composeMailReducer;
+export default sentMessagesReducer;
