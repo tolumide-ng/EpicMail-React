@@ -4,6 +4,8 @@ import { composeDraft } from './composeDraft';
 import { sentMessages } from './sentMessages';
 import { requestReset } from './requestReset';
 import { deleteMessage } from './deleteMessage';
+import { specificSentMessage } from './specificSentMessage';
+import { retractMessage } from './retractMessage';
 
 const initialState = {
   auth,
@@ -11,7 +13,9 @@ const initialState = {
   composeMail,
   composeDraft,
   sentMessages,
-  deleteMessage
+  deleteMessage,
+  specificSentMessage,
+  retractMessage
 };
 
 export default initialState;

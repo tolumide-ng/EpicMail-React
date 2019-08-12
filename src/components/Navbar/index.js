@@ -8,6 +8,7 @@ const NavBar = () => (
     <NavLink to="/reset">Reset Password</NavLink>{' '}
     <NavLink to="/compose">Compose Mail</NavLink>
     <NavLink to="/sent">Sent Messages</NavLink>
+    {/* <NavLink to="/message/:id">Specific Message</NavLink> */}
   </>
 );
 

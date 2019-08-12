@@ -5,6 +5,8 @@ import composeMailReducer from './composeMail';
 import composeDraftReducer from './composeDraft';
 import sentMessagesReducer from './sentMessages';
 import deleteMessageReducer from './deleteMessage';
+import specificSentMessageReducer from './specificSentMessage';
+import retractMessageReducer from './retractMessage';
 
 const rootReducer = combineReducers({
   authReducer,
@@ -12,7 +14,9 @@ const rootReducer = combineReducers({
   composeMailReducer,
   composeDraftReducer,
   sentMessagesReducer,
-  deleteMessageReducer
+  deleteMessageReducer,
+  specificSentMessageReducer,
+  retractMessageReducer
 });
 
 export default rootReducer;
