@@ -9,6 +9,7 @@ import ComposeMail from '../pages/ComposeMail';
 import SentMessages from '../pages/SentMessages';
 import SpecificSentMessage from '../pages/specificSentMessage';
 import Navbar from '../components/Navbar';
+import PrivateRoute from './PrivateRoute';
 
 const Routes = () => (
   <Router>
@@ -19,9 +20,9 @@ const Routes = () => (
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/reset" component={RequestReset} />
-      <Route exact path="/compose" component={ComposeMail} />
-      <Route exact path="/sent" component={SentMessages} />
-      <Route path="/message/:id" component={SpecificSentMessage} />
+      <PrivateRoute exact path="/compose" component={ComposeMail} />
+      <PrivateRoute exact path="/sent" component={SentMessages} />
+      <PrivateRoute path="/message/:id" component={SpecificSentMessage} />
     </Switch>
   </Router>
 );

@@ -2,6 +2,8 @@ import axios from 'axios';
 
 import config from '../../../config';
 
+import { checkLocalStorage } from '../../../utils';
+
 import {
   FETCH_SPECIFICSENTMESSAGE_PENDING,
   FETCH_SPECIFICSENTMESSAGE_SUCCESS,
@@ -47,9 +49,7 @@ export const fetchSpecificSentMessageAction = ({
   dispatch(fetchSpecificSentMessagePending());
 
   try {
-    let user = localStorage.getItem('user');
-    user = JSON.parse(user);
-    const { token } = user;
+    const token = checkLocalStorage();
 
     const response = await axios({
       method: 'GET',

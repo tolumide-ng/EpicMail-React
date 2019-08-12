@@ -1,5 +1,6 @@
 import * as Toastr from 'toastr';
 import axios from 'axios';
+import { checkLocalStorage } from '../../../utils';
 
 import config from '../../../config';
 import {
@@ -47,9 +48,7 @@ export const composeMailAction = ({
   dispatch(composePending());
 
   try {
-    let user = localStorage.getItem('user');
-    user = JSON.parse(user);
-    const { token } = user;
+    const token = checkLocalStorage();
 
     const response = await axios({
       method: 'POST',

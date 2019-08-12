@@ -43,6 +43,7 @@ const ViewSentMessages = ({
 const mapStateToProps = state => ({
   sentMessages: state.sentMessagesReducer.sentMessages,
   user: state.authReducer.user,
+  person: state,
   composeStatus: state.composeMailReducer.composeStatus,
   sentMessagesStatus: state.sentMessagesReducer.sentMessagesStatus,
   fetchSentStatus: state.sentMessagesReducer.fetchSentMessages,

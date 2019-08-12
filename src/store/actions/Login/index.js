@@ -23,7 +23,8 @@ export const loginSuccess = user => ({
   payload: {
     status: 'AuthenticationSuccessful',
     user,
-    error: null
+    error: null,
+    isAuthenticated: true
   }
 });
 
@@ -32,6 +33,7 @@ export const loginFailure = error => ({
   payload: {
     status: 'AuthenticationFailure',
     user: {},
+    isAuthenticated: false,
     error
   }
 });
