@@ -12,8 +12,6 @@ export const axiosCall = async ({ path, method, payload }) => {
 
 export const saveToLocalStorage = user => {
   if (user) {
-    // const { token } = user;
-    // localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
   }
 };
@@ -43,10 +41,6 @@ export const limitReceiverLenght = email => {
 };
 
 export const displaySubject = ({ subject, message }) => {
-  // const newSubject = `${subject} - ${message}`.slice(0, 10);
-  // const thename = `${subject}&&&&&&&&&&${message}`.slice(0, 45);
-  // const thearr = thename.split('&&&&&&&&&&');
-  // return `<span><strong>${thearr[0]}</strong> - ${thearr[1]}</span>`;
   if (subject.length > 30) {
     return <strong>{subject.slice(0, 30)}</strong>;
   }
@@ -66,9 +60,9 @@ export const displaySubject = ({ subject, message }) => {
   );
 };
 
-export const checkLocalStorage = () => {
+export const checkLocalStorage = ({ history }) => {
   let user = localStorage.getItem('user');
-  if (!user) return;
+  if (!user) return history.push('/login');
 
   user = JSON.parse(user);
   const { token } = user;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm Validation Fails should have validation error when confirmpassword field does not match password 1`] = `[Function]`;
+
+exports[`LoginForm Validation Fails should have validation error when confirmpassword field is touched and not complete 1`] = `[Function]`;
+
+exports[`LoginForm Validation Fails should have validation error when firstName field is touched and not complete 1`] = `[Function]`;
+
+exports[`LoginForm Validation Fails should have validation error when lastName field is touched and not complete 1`] = `[Function]`;
+
+exports[`LoginForm Validation Fails should have validation error when lastName field is touched and not complete 2`] = `[Function]`;
+
+exports[`LoginForm Validation Fails should have validation error when password field is touched and not complete 1`] = `[Function]`;
+
+exports[`LoginForm Validation Fails should have validation error when password field is touched and not complete 2`] = `[Function]`;
+
+exports[`LoginForm Validation Fails should have validation error when username field is touched and not complete 1`] = `[Function]`;
+
+exports[`LoginForm Validation Fails should have validation error when username field is touched and not complete 2`] = `[Function]`;
+
+exports[`LoginForm Validation Fails should have validation error when username field is touched and not complete 3`] = `[Function]`;
+
+exports[`SignupForm Validation Success simulate input and click the form submit button 1`] = `[Function]`;

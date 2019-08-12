@@ -24,7 +24,7 @@ const composeMailReducer = (
     case COMPOSE_FAILURE:
       return {
         ...state,
-        payload
+        ...payload
       };
     default:
       return state;

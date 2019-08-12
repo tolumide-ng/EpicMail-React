@@ -14,15 +14,12 @@ export const SentMessages = ({
   user
 }) => {
   const { createdon, id, receiveremail, subject, message } = props;
-  console.log('props hiostoribsefuiropie?>>>>>>>', history);
 
   const handleDelete = ({ id }) => {
     deleteSpecificMessage({ messageId: id });
   };
 
   const handleClick = ({ id }) => {
-    console.log('she got to me here');
-    console.log('this it hanfl>>>>>>', history);
     viewSentMessage({ messageId: id, history });
   };
 
@@ -57,10 +54,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   deleteSpecificMessage: messageId => dispatch(deleteMessageAction(messageId)),
-  viewSentMessage: ({ messageId, history }) => (
-    console.log(history),
+  viewSentMessage: ({ messageId, history }) =>
     dispatch(fetchSpecificSentMessageAction({ messageId, history }))
-  )
 });
 
 export default connect(

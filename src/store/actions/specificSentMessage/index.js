@@ -49,7 +49,7 @@ export const fetchSpecificSentMessageAction = ({
   dispatch(fetchSpecificSentMessagePending());
 
   try {
-    const token = checkLocalStorage();
+    const token = checkLocalStorage({ history });
 
     const response = await axios({
       method: 'GET',

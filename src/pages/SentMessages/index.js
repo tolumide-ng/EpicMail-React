@@ -19,7 +19,7 @@ const ViewSentMessages = ({
       composeStatus === 'success' ||
       deleteMessageStatus === 'success'
     ) {
-      fetchSentMessages();
+      fetchSentMessages({ history });
     }
   }, [fetchSentStatus, composeStatus, deleteMessageStatus]);
 
@@ -51,7 +51,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchSentMessages: () => dispatch(sentMessagesAction())
+  fetchSentMessages: ({ history }) => dispatch(sentMessagesAction({ history }))
 });
 
 export default connect(
