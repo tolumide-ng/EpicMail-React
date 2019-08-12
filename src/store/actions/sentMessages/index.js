@@ -7,6 +7,8 @@ import {
   SENTMESSAGES_SUCCESSFUL
 } from '../../actiontypes/messages';
 
+import { checkLocalStorage } from '../../../utils';
+
 export const sentMessagesPending = () => ({
   type: SENTMESSAGES_PENDING,
   payload: {
@@ -38,12 +40,11 @@ export const sentMessagesFailure = sentMessagesError => ({
 
 export const sentMessagesAction = () => async dispatch => {
   dispatch(sentMessagesPending());
+  console.log('just dispatched this action');
+
+  const token = checkLocalStorage();
 
   try {
-    let user = localStorage.getItem('user');
-    user = JSON.parse(user);
-    const { token } = user;
-
     const response = await axios({
       method: 'GET',
       headers: {
@@ -51,6 +52,8 @@ export const sentMessagesAction = () => async dispatch => {
       },
       url: `${config.apiUrl}messages/sent`
     });
+
+    console.log('this is the resopiosne>>>>>>>>>> ', response);
 
     const { data } = await response.data;
 

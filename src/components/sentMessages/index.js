@@ -10,31 +10,35 @@ export const SentMessages = ({
   props,
   deleteSpecificMessage,
   viewSentMessage,
-  history
+  history,
+  user
 }) => {
   const { createdon, id, receiveremail, subject, message } = props;
+  console.log('props hiostoribsefuiropie?>>>>>>>', history);
 
   const handleDelete = ({ id }) => {
     deleteSpecificMessage({ messageId: id });
   };
 
   const handleClick = ({ id }) => {
+    console.log('she got to me here');
+    console.log('this it hanfl>>>>>>', history);
     viewSentMessage({ messageId: id, history });
   };
 
   return (
     <div className="w-11/12 flex justify-between bg-gray-300 mb-1 p-2 mx-auto px-4">
-      {/* <div
+      <div
         onClick={() => handleClick({ id })}
         className="w-full flex justify-between"
         role="presentation"
-      > */}
-      <Link className="w-full flex justify-between" to={`/message/${id}`}>
+      >
+        {/* <Link className="w-full flex justify-between" to={`/message/${id}`}> */}
         <div className="w-2/12">{convertDate(createdon)}</div>
         <div className="w-1/4">{limitReceiverLenght(receiveremail)}</div>
         <div className="w-2/4">{displaySubject({ subject, message })}</div>
-      </Link>
-      {/* </div> */}
+        {/* </Link> */}
+      </div>
 
       <button
         className="px-1"
@@ -47,12 +51,16 @@ export const SentMessages = ({
   );
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  user: state.authReducer.user
+});
 
 const mapDispatchToProps = dispatch => ({
   deleteSpecificMessage: messageId => dispatch(deleteMessageAction(messageId)),
-  viewSentMessage: ({ messageId, history }) =>
+  viewSentMessage: ({ messageId, history }) => (
+    console.log(history),
     dispatch(fetchSpecificSentMessageAction({ messageId, history }))
+  )
 });
 
 export default connect(

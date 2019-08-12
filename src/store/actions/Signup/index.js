@@ -22,13 +22,26 @@ export const signupSuccess = user => ({
   payload: {
     status: 'AuthenticationSuccessful',
     user,
-    error: null
+    error: null,
+    isAuthenticated: true
   }
 });
 
 export const setUser = user => ({
   type: 'SET_USER',
-  payload: { isStarting: false, status: 'AuthenticationSuccessful', user }
+  payload: {
+    isStarting: false,
+    status: 'AuthenticationSuccessful',
+    user,
+    isAuthenticated: true
+  }
+});
+
+export const setIsStarting = user => ({
+  type: 'SET_TOFALSE',
+  payload: {
+    isStarting: false
+  }
 });
 
 export const signupFailure = error => ({
@@ -36,7 +49,8 @@ export const signupFailure = error => ({
   payload: {
     status: 'AuthenticationFailure',
     user: {},
-    error
+    error,
+    isAuthenticated: false
   }
 });
 

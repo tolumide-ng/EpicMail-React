@@ -65,3 +65,12 @@ export const displaySubject = ({ subject, message }) => {
     </span>
   );
 };
+
+export const checkLocalStorage = () => {
+  let user = localStorage.getItem('user');
+  if (!user) return;
+
+  user = JSON.parse(user);
+  const { token } = user;
+  return token;
+};

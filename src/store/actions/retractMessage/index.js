@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as Toastr from 'toastr';
 import config from '../../../config';
+import { checkLocalStorage } from '../../../utils';
 
 import {
   RETRACT_PENDING,
@@ -46,9 +47,7 @@ export const retractAction = ({
   dispatch(retractPending());
 
   try {
-    let user = localStorage.getItem('user');
-    user = JSON.parse(user);
-    const { token } = user;
+    const token = checkLocalStorage();
 
     const response = await axios({
       method: 'DELETE',
