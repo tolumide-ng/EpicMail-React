@@ -16,9 +16,6 @@ const AppRouter = withRouter(({ location }) => {
   const noNavBarPaths = ['/login', '/signup', '/reset'];
   return (
     <Provider store={store}>
-      {/* {noNavBarPaths.forEach(path =>
-        location.pathname === path ? '' : <Navbar />
-      )} */}
       {noNavBarPaths.includes(location.pathname) ? '' : <Navbar />}
 
       <Switch>
@@ -26,8 +23,8 @@ const AppRouter = withRouter(({ location }) => {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/reset" component={RequestReset} />
-        <PrivateRoute exact path="/compose" component={ComposeMail} />
-        <PrivateRoute exact path="/sent" component={SentMessages} />
+        <PrivateRoute path="/compose" component={ComposeMail} />
+        <PrivateRoute path="/sent" component={SentMessages} />
         <PrivateRoute path="/message/:id" component={SpecificSentMessage} />
       </Switch>
     </Provider>

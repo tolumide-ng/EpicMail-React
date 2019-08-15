@@ -17,7 +17,8 @@ const ViewSentMessages = ({
     if (
       fetchSentStatus ||
       composeStatus === 'success' ||
-      deleteMessageStatus === 'success'
+      deleteMessageStatus === 'success' ||
+      deleteMessageStatus === 'failure'
     ) {
       fetchSentMessages({ history });
     }

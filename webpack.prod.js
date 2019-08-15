@@ -1,13 +1,12 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractWebpackPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
 const common = require('./webpack.common');
 
 const PATHS = {
@@ -21,12 +20,13 @@ module.exports = merge(common, {
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new MiniCssExtractWebpackPlugin({ filename: '[name].[contentHash].css' }),
-    new CleanWebpackPlugin(),
-    new PurgecssPlugin({
-      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true })
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'template.html')
     }),
-    new Dotenv()
+    new MiniCssExtractPlugin({
+      filename: 'index.css',
+      chunkFilename: '[id].css'
+    })
   ],
   optimization: {
     minimizer: [
@@ -47,10 +47,18 @@ module.exports = merge(common, {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractWebpackPlugin.loader,
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
+          { loader: MiniCssExtractPlugin.loader },
+          'css-loader',
           'postcss-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
         ]
       }
     ]

@@ -12,8 +12,14 @@
     "lint:fix": "prettier-eslint \"**/*.{js,json}\" --write",
     "prettier": "prettier **/*.{js,json} --write",
     "format": "pretty-quick",
-    "test": "jest --coverage --config=jest.config.js",
-    "test:watch": "yarn jest --config=jest.config.js --watchAll --coverage "
+    "test": "jest --coverage",
+    "test:watch": "yarn jest --watchAll --coverage "
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   },
   "husky": {
     "hooks": {

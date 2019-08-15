@@ -38,8 +38,10 @@ export const sentMessagesFailure = sentMessagesError => ({
   }
 });
 
-export const sentMessagesAction = ({ history }) => async dispatch => {
+export const sentMessagesAction = ({ history = {} }) => async dispatch => {
   dispatch(sentMessagesPending());
+
+  console.log('history of the file', history);
 
   const token = checkLocalStorage({ history });
 
@@ -56,6 +58,8 @@ export const sentMessagesAction = ({ history }) => async dispatch => {
     });
 
     const { data } = await response.data;
+
+    console.log('the messages', data);
 
     dispatch(sentMessagesSuccessful(data));
   } catch ({ response }) {

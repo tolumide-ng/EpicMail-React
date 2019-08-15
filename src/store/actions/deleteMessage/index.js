@@ -35,6 +35,7 @@ export const deleteMessageAction = ({
   rerender,
   history
 }) => async dispatch => {
+  console.log('th message id', messageId);
   dispatch(deleteMessagePending());
 
   try {
