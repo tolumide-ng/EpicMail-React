@@ -47,7 +47,7 @@ export const retractAction = ({
   dispatch(retractPending());
 
   try {
-    const token = checkLocalStorage();
+    const token = checkLocalStorage({ history });
 
     const response = await axios({
       method: 'DELETE',
@@ -58,9 +58,9 @@ export const retractAction = ({
     });
 
     const { data } = response.data;
+    Toastr.success('Message Successfully Retracted');
 
     dispatch(retractSuccessful(data));
-    Toastr.success(data);
 
     if (rerender) {
       history.push(`${rerender}`);

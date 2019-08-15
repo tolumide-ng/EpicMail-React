@@ -53,9 +53,12 @@ export class ComposeMail extends Component {
       return;
     }
     this.props.composeMail({
-      recipient: this.state.recipient,
-      message: this.state.message,
-      subject: this.state.subject
+      history,
+      wholeMessage: {
+        recipient: this.state.recipient,
+        message: this.state.message,
+        subject: this.state.subject
+      }
     });
   };
 
@@ -158,7 +161,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  composeMail: wholeMessage => dispatch(composeMailAction(wholeMessage)),
+  composeMail: ({ history, wholeMessage }) =>
+    dispatch(composeMailAction({ history, wholeMessage })),
   composeDraft: wholeMessage => dispatch(composeDraftAction(wholeMessage))
 });
 

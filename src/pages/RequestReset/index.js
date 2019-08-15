@@ -6,12 +6,7 @@ import { connect } from 'react-redux';
 import ResetRequestSchema from './schema';
 import { requestResetAction } from '../../store/actions/requestReset';
 
-const RequestResetForm = ({
-  isLoading,
-  error,
-  isCompleted,
-  requestResetAction
-}) => (
+const RequestResetForm = ({ isLoading, error, isCompleted, requestReset }) => (
   <div className="flex mt-20 mx-auto flex-col p-10 w-100 rounded justify-center">
     <Formik
       className="flex flex-col justify-center"
@@ -21,7 +16,7 @@ const RequestResetForm = ({
       }}
       validationSchema={ResetRequestSchema}
       onSubmit={values => {
-        requestResetAction(values);
+        requestReset(values);
       }}
     >
       {({ errors, touched }) => (
@@ -33,7 +28,7 @@ const RequestResetForm = ({
             <Field
               name="username"
               placeholder="username"
-              className={`${'w-64 h-10 p-2 pl-4 border border-gray-400 text-sm outline-none rounded-lg'} ${
+              className={`${'w-64 h-10 p-2 pl-4 border border-gray-400 text-sm outline-none rounded-lg text-center'} ${
                 errors.username ? 'border-red-500' : ''
               }`}
             />
@@ -53,12 +48,12 @@ const RequestResetForm = ({
         </Form>
       )}
     </Formik>
-    <button
-      type="submit"
+    <Link
+      to="/login"
       className="mb-4 w-auto self-center button hover:text-yellow-200 text-white text-sm"
     >
-      Login
-    </button>
+      Login{' '}
+    </Link>
   </div>
 );
 
