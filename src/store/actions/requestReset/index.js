@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as Toastr from 'toastr';
 import {
   REQUEST_RESET_PENDING,
   REQUEST_RESET_SUCCESS,
@@ -41,11 +42,13 @@ export const requestResetAction = ({ username }) => async dispatch => {
         email: `${username}@epicmail.com`
       }
     });
-    const user = response.data.data[0];
+    const user = response.data.data;
+    Toastr.success(user);
 
     dispatch(requestResetSucces(user));
   } catch ({ response }) {
     const message = response.data.error || response;
+    Toastr.error('Username specified for password reset does not exist');
 
     dispatch(requestResetFailure(message));
   }

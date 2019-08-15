@@ -1,9 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import { signupAction } from '../../store/actions/signup';
 
 import SignupSchema from './schema';
+// const redirectToLogin = () => {
+//   <Link to="/login" />;
+// };
 
 export const SignupForm = ({
   isLoading,
@@ -13,7 +17,6 @@ export const SignupForm = ({
   history
 }) => (
   <div>
-    <h1>Signup</h1>
     <Formik
       initialValues={{
         firstName: '',
@@ -174,14 +177,14 @@ export const SignupForm = ({
                 type="submit"
                 className="mb-4 bg-blue-900 w-auto p-1 self-center text-white text-base rounded hover:bg-blue-700 button"
               >
-                Sign up
+                {!isSubmitting ? 'Sign up' : 'Signing up'}
               </button>
-              <button
-                type="submit"
+              <Link
+                to="/login"
                 className="mb-4 w-auto p-2 self-center button hover:text-indigo-700"
               >
                 Already have an account?
-              </button>
+              </Link>
             </div>
           </Form>
         </div>

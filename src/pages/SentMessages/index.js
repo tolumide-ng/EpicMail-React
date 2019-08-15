@@ -26,7 +26,7 @@ const ViewSentMessages = ({
   return (
     <>
       <div className="flex form_body m-10 mx-auto flex-col p-10 w-10/12 rounded h-full">
-        These are supposed to be your sent messages
+        <h1 className="text-center font-bold mb-4 text-xl">Sent Messages</h1>
         {sentMessages.length > 0 &&
           sentMessages.map(message => (
             <SentMessagesComponent
@@ -35,6 +35,7 @@ const ViewSentMessages = ({
               history={history}
             />
           ))}
+        {/* {sentMessages.length < 1 && <div className='font-bold text-center'>You do not have any messages at the moment<div/>} */}
       </div>
     </>
   );

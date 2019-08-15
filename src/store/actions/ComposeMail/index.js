@@ -38,17 +38,15 @@ export const composeSuccessful = composeSuccess => ({
   }
 });
 
-// export const compos
-
 export const composeMailAction = ({
-  recipient: receiverEmail,
-  subject,
-  message
+  history,
+  wholeMessage
 }) => async dispatch => {
+  const { recipient: receiverEmail, subject, message } = wholeMessage;
   dispatch(composePending());
 
   try {
-    const token = checkLocalStorage();
+    const token = checkLocalStorage({ history });
 
     const response = await axios({
       method: 'POST',
@@ -69,20 +67,10 @@ export const composeMailAction = ({
     dispatch(composeSuccessful(data));
 
     dispatch(sentMessagesAction());
-
-    // dispatch(setSentMessagesStatusToTrue())
-
-    // const response = await fetch(`${config.apiUrl}messages/`, {
-    //   method: 'post',
-    //   headers: {
-    //     'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    //     authorization: `bearer ${token}`
-    //   },
-    //   body: { receiverEmail, subject, message },
-    //   mode: 'cors'
-    // });
+    return;
   } catch ({ response }) {
-    const errorMessage = response.data.error || response;
+    let errorMessage;
+    if (response) errorMessage = response.data.error || response;
     Toastr.error(errorMessage);
     dispatch(composeFailure(errorMessage));
   }
