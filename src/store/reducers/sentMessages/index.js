@@ -6,7 +6,7 @@ import {
 
 import initialState from '../../initialState';
 
-const sentMessagesReducer = (
+export const sentMessagesReducer = (
   state = initialState.sentMessages,
   { type, payload }
 ) => {

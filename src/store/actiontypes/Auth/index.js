@@ -4,6 +4,8 @@ export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 
+export const SET_USER = 'SET_USER';
+
 export const LOGIN_PENDING = 'LOGIN_PENDING';
 
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';

@@ -1,5 +1,5 @@
 export const requestReset = {
-  requestResetStatus: 'pending',
+  requestResetStatus: 'rest',
   user: {},
   error: null
 };

@@ -38,13 +38,15 @@ export const sentMessagesFailure = sentMessagesError => ({
   }
 });
 
-export const sentMessagesAction = () => async dispatch => {
+export const sentMessagesAction = ({ history }) => async dispatch => {
   dispatch(sentMessagesPending());
-  console.log('just dispatched this action');
 
-  const token = checkLocalStorage();
+  const token = checkLocalStorage({ history });
 
   try {
+    if (!token) {
+      return history.push('/login');
+    }
     const response = await axios({
       method: 'GET',
       headers: {
@@ -52,8 +54,6 @@ export const sentMessagesAction = () => async dispatch => {
       },
       url: `${config.apiUrl}messages/sent`
     });
-
-    console.log('this is the resopiosne>>>>>>>>>> ', response);
 
     const { data } = await response.data;
 

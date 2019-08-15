@@ -10,7 +10,8 @@
     "lint:fix": "prettier-eslint \"**/*.{js,json}\" --write",
     "prettier": "prettier **/*.{js,json} --write",
     "format": "pretty-quick",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test:watch": "yarn jest --watchAll --coverage"
   },
   "husky": {
     "hooks": {
@@ -66,12 +67,15 @@
     "eslint-plugin-react": "^7.14.2",
     "file-loader": "^4.0.0",
     "html-loader": "^0.5.5",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.18.2",
     "prettier-eslint": "^9.0.0",
     "prettier-eslint-cli": "^5.0.0",
     "pretty-quick": "^1.11.1",
+    "redux-mock-store": "^1.5.3",
+    "redux-promise-middleware": "^6.1.1",
     "style-loader": "^0.23.1",
     "webpack-hot-middleware": "^2.25.0"
   },

@@ -4,7 +4,8 @@ import {
   LOGIN_FAILURE,
   SIGNUP_PENDING,
   SIGNUP_SUCCESS,
-  SIGNUP_FAILURE
+  SIGNUP_FAILURE,
+  SET_USER
 } from '../../actiontypes/auth';
 
 import initialState from '../../initialState';
@@ -41,7 +42,7 @@ const authReducer = (state = initialState.auth, { type, payload }) => {
         ...state,
         ...payload
       };
-    case 'SET_USER':
+    case SET_USER:
       return {
         ...state,
         ...payload

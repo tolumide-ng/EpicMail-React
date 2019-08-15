@@ -1,4 +1,5 @@
 import * as Toastr from 'toastr';
+import axios from 'axios';
 
 import {
   LOGIN_PENDING,
@@ -7,7 +8,7 @@ import {
 } from '../../actiontypes/auth';
 
 import config from '../../../config';
-import { axiosCall, emailCheck } from '../../../utils';
+import { emailCheck } from '../../../utils';
 
 export const loginPending = () => ({
   type: LOGIN_PENDING,
@@ -38,18 +39,24 @@ export const loginFailure = error => ({
   }
 });
 
-export const loginAction = ({ username, password }) => async dispatch => {
+export const loginAction = ({ userData, history }) => async dispatch => {
+  const { username, password } = userData;
   dispatch(loginPending());
 
   try {
-    const response = await axiosCall({
+    const response = await axios({
       method: 'post',
-      path: 'auth/login',
-      payload: { email: emailCheck(username), password }
+      url: `${config.apiUrl}auth/login`,
+      data: { email: emailCheck(username), password }
     });
 
-    const user = response.data.data[0];
+    const { data } = response.data;
+
+    const user = data[0];
+
     dispatch(loginSuccess(user));
+
+    history.push('/compose');
   } catch ({ response }) {
     // toast message comes in here for netwrok error
     const message = response.data.error || response;
@@ -57,3 +64,5 @@ export const loginAction = ({ username, password }) => async dispatch => {
     dispatch(loginFailure(message));
   }
 };
+
+export default loginAction;

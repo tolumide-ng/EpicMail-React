@@ -5,7 +5,13 @@ import { signupAction } from '../../store/actions/signup';
 
 import SignupSchema from './schema';
 
-const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
+export const SignupForm = ({
+  isLoading,
+  error,
+  isCompleted,
+  signUp,
+  history
+}) => (
   <div>
     <h1>Signup</h1>
     <Formik
@@ -19,10 +25,11 @@ const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
       }}
       validationSchema={SignupSchema}
       onSubmit={values => {
-        signUp(values);
+        /* istanbul ignore next */
+        signUp({ userData: values, history });
       }}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, isSubmitting }) => (
         <div className="flex form_body m-16 mx-auto flex-col p-10 w-7/12 rounded">
           <div className="ml-10 mb-10 w-100">
             <div className="flex flex-row justify-between mr-4">
@@ -47,13 +54,18 @@ const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
                 <Field
                   name="firstName"
                   placeholder="firstName"
-                  type="string"
+                  type="input"
                   className={`${'w-11/12 h-8 p-2 border border-gray-400 text-sm outline-none rounded'} ${
                     errors.firstName ? 'border-red-700' : ''
                   }`}
                 />
                 {errors.firstName && touched.firstName ? (
-                  <div className="text-red-400 text-xs">{errors.firstName}</div>
+                  <div
+                    className="text-red-400 text-xs"
+                    data-testid="firstNameError"
+                  >
+                    {errors.firstName}
+                  </div>
                 ) : null}
               </div>
 
@@ -61,13 +73,18 @@ const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
                 <Field
                   name="lastName"
                   placeholder="lastName"
-                  type="string"
+                  type="input"
                   className={`${'w-11/12 h-8 p-2 border border-gray-400 text-sm outline-none rounded'} ${
                     errors.lastName ? 'border-red-500' : ''
                   }`}
                 />
                 {errors.lastName && touched.lastName ? (
-                  <div className="text-red-400 text-xs">{errors.lastName}</div>
+                  <div
+                    className="text-red-400 text-xs"
+                    data-testid="lastNameError"
+                  >
+                    {errors.lastName}
+                  </div>
                 ) : null}
               </div>
             </div>
@@ -76,13 +93,18 @@ const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
               <Field
                 name="username"
                 placeholder="username"
-                type="string"
+                type="input"
                 className={`${'w-11/12 h-8 p-2 border border-gray-400 text-sm outline-none rounded'} ${
-                  errors.email ? 'border-red-500' : ''
+                  errors.username ? 'border-red-500' : ''
                 }`}
               />
               {errors.username && touched.username ? (
-                <div className="text-red-400 text-xs">{errors.username}</div>
+                <div
+                  className="text-red-400 text-xs"
+                  data-testid="usernameError"
+                >
+                  {errors.username}
+                </div>
               ) : null}
             </div>
 
@@ -95,8 +117,14 @@ const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
                   errors.email ? 'border-red-500' : ''
                 }`}
               />
-              {errors.email && touched.enail ? (
-                <div className="text-red-400 text-xs">{errors.email}</div>
+              {errors.email && touched.email ? (
+                <div
+                  className="text-red-400 text-xs"
+                  placeholder="emailError"
+                  data-testid="emailError"
+                >
+                  {errors.email}
+                </div>
               ) : null}
             </div>
 
@@ -111,7 +139,12 @@ const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
                   }`}
                 />
                 {errors.password && touched.password ? (
-                  <div className="text-red-400 text-xs">{errors.password}</div>
+                  <div
+                    className="text-red-400 text-xs"
+                    data-testid="passwordError"
+                  >
+                    {errors.password}
+                  </div>
                 ) : null}
               </div>
 
@@ -125,7 +158,10 @@ const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
                   }`}
                 />
                 {errors.confirmPassword && touched.confirmPassword ? (
-                  <div className="text-red-400 text-xs">
+                  <div
+                    className="text-red-400 text-xs"
+                    data-testid="confirmPasswordError"
+                  >
                     {errors.confirmPassword}
                   </div>
                 ) : null}
@@ -134,6 +170,7 @@ const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
 
             <div className="flex ml-6 w-100 flex-col justify-center">
               <button
+                data-testid="submitButton"
                 type="submit"
                 className="mb-4 bg-blue-900 w-auto p-1 self-center text-white text-base rounded hover:bg-blue-700 button"
               >
@@ -153,12 +190,15 @@ const SignupForm = ({ isLoading, error, isCompleted, signUp }) => (
   </div>
 );
 
-const mapStateToProps = state => ({
-  error: state.authReducer.error
-});
+export const mapStateToProps = state => {
+  return {
+    error: state.error
+  };
+};
 
-const mapDispatchToProps = dispatch => ({
-  signUp: userData => dispatch(signupAction(userData))
+export const mapDispatchToProps = dispatch => ({
+  signUp: ({ userData, history }) =>
+    dispatch(signupAction({ userData, history }))
 });
 
 export default connect(

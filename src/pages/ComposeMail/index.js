@@ -5,6 +5,7 @@ import * as Toastr from 'toastr';
 import { composeMailAction } from '../../store/actions/composeMail';
 import { composeDraftAction } from '../../store/actions/composeDraft';
 const regEmail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+import { checkLocalStorage } from '../../utils';
 
 export class ComposeMail extends Component {
   state = {
@@ -19,6 +20,10 @@ export class ComposeMail extends Component {
   };
 
   errorMessage = [];
+
+  componentDidMount() {
+    checkLocalStorage({ history: this.props.history });
+  }
 
   validateForm = ({ errors, recipient }) => {
     let valid = true;

@@ -24,7 +24,7 @@ const SpecificSentMessage = ({
 
   useEffect(() => {
     if (loadPage) {
-      fetchSpecificSentMessageAction({ messageId: match.params.id });
+      fetchSpecificSentMessageAction({ messageId: match.params.id, history });
       setLoadPage(false);
     }
   }, [loadPage]);
@@ -88,8 +88,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchSpecificSentMessageAction: ({ messageId }) =>
-    dispatch(fetchSpecificSentMessageAction({ messageId })),
+  fetchSpecificSentMessageAction: ({ messageId, history }) =>
+    dispatch(fetchSpecificSentMessageAction({ messageId, history })),
   deleteSpecificMessage: ({ messageId, history, rerender }) =>
     dispatch(deleteMessageAction({ messageId, history, rerender })),
   retractSpecificMessage: ({ messageId, history, rerender }) =>
