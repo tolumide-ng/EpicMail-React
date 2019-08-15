@@ -135,7 +135,6 @@ describe.skip('SignupForm Validation Success', () => {
     expect(confirmPasswordInput.value).toBe(confirmPassword);
 
     expect(getByText('Sign up')).toBeTruthy();
-    console.log('the firstname>>>>>', firstNameInput);
 
     // fireEvent.submit(submitButton);
 

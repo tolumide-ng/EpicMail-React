@@ -29,7 +29,7 @@ export const LoginForm = ({ isLoading, isCompleted, login, history }) => (
               name="username"
               placeholder="username"
               data-testid="usernameId"
-              className={`${'w-64 h-10 p-2 pl-4 border border-gray-400 text-sm outline-none rounded-lg'} ${
+              className={`${'w-64 h-10 p-2 pl-4 border border-gray-400 text-sm outline-none rounded-lg text-center'} ${
                 errors.username ? 'border-red-500' : ''
               }`}
             />
@@ -48,7 +48,7 @@ export const LoginForm = ({ isLoading, isCompleted, login, history }) => (
               name="password"
               placeholder="password"
               type="password"
-              className={`${'w-64 h-10 p-2 pl-4 border border-gray-400 text-sm outline-none rounded-lg'} ${
+              className={`${'w-64 h-10 p-2 pl-4 border border-gray-400 text-sm outline-none rounded-lg text-center'} ${
                 errors.password ? 'border-red-500' : ''
               }`}
             />
@@ -74,12 +74,12 @@ export const LoginForm = ({ isLoading, isCompleted, login, history }) => (
         </Form>
       )}
     </Formik>
-    <button
-      type="submit"
-      className="mb-4 w-auto self-center button hover:text-yellow-200 text-white text-sm"
+    <Link
+      to="/reset"
+      className="mb- w-auto self-center button hover:text-yellow-200 text-white text-sm"
     >
       Forgot password ?
-    </button>
+    </Link>
   </div>
 );
 

@@ -38,7 +38,7 @@ export const deleteMessageAction = ({
   dispatch(deleteMessagePending());
 
   try {
-    const token = checkLocalStorage();
+    const token = checkLocalStorage({ history });
 
     const response = await axios({
       method: 'DELETE',

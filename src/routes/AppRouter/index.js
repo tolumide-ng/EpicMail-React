@@ -16,9 +16,10 @@ const AppRouter = withRouter(({ location }) => {
   const noNavBarPaths = ['/login', '/signup', '/reset'];
   return (
     <Provider store={store}>
-      {noNavBarPaths.forEach(path =>
+      {/* {noNavBarPaths.forEach(path =>
         location.pathname === path ? '' : <Navbar />
-      )}
+      )} */}
+      {noNavBarPaths.includes(location.pathname) ? '' : <Navbar />}
 
       <Switch>
         <Route exact path="/" component={Home} />
