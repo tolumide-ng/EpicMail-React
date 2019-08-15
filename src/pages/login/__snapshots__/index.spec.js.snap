@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`LoginForm Validation Fails should have validation error when password field is touched and not complete 1`] = `[Function]`;
-
-exports[`LoginForm Validation Fails should have validation error when username field is touched and not complete 1`] = `[Function]`;
-
-exports[`LoginForm Validation Success simulate input and click the form submit button 1`] = `[Function]`;
