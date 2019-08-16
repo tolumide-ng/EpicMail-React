@@ -41,7 +41,7 @@ export const SignupForm = ({
                 <span className="text-red-600">C</span>
                 <span id="five">_Mail</span>{' '}
               </div>
-              <img src={logo} alt="epicmail logo" className="h-12" />
+              {/* <img src={logo} alt="epicmail logo" className="h-12" /> */}
             </div>
             <p className="text-sm">Create your EPIC_Mail account</p>
           </div>
@@ -169,7 +169,7 @@ export const SignupForm = ({
               <button
                 data-testid="submitButton"
                 type="submit"
-                className="mb-4 bg-blue-900 w-auto p-1 self-center text-white text-base rounded hover:bg-blue-700 button"
+                className="mb-4 bg-blue-900 w-auto p-1 self-center text-white text-base rounded hover:bg-blue-700 button px-8 py-1"
               >
                 {!isSubmitting ? 'Sign up' : 'Signing up'}
               </button>

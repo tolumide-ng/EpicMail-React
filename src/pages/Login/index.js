@@ -1,10 +1,16 @@
 import './index.css';
 import React from 'react';
+import * as Yup from 'yup';
+
 import { Formik, Form, Field } from 'formik';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LoginSchema from './schema';
 import { loginAction } from '../../store/actions/login';
+
+const LoginSchema = Yup.object().shape({
+  username: Yup.string().required('username is required'),
+  password: Yup.string().required('password is required')
+});
 
 export const LoginForm = ({
   isLoading,
@@ -85,13 +91,13 @@ export const LoginForm = ({
     <div className="flex justify-between w-1/4 mx-auto">
       <Link
         to="/reset"
-        className="mr-4 w-auto self-center button hover:text-yellow-200 text-white text-sm"
+        className="mr-4 w-auto self-center button hover:text-yellow-200 text-white text-sm text-center"
       >
         Forgot password ?
       </Link>
       <Link
         to="/signup"
-        className="ml-2 w-auto self-center button hover:text-yellow-200 text-white text-sm"
+        className="ml-2 w-auto self-center button hover:text-yellow-200 text-white text-sm text-center"
       >
         Return to signup
       </Link>

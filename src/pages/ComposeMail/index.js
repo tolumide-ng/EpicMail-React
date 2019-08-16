@@ -86,7 +86,7 @@ export class ComposeMail extends Component {
     return (
       <>
         <div className="flex form_body m-10 mx-auto flex-col p-10 w-10/12 rounded">
-          <div className="w-full bg-blue-700 text-base tracking-wide p-2 text-white">
+          <div className="w-full bg-blue-700 text-base tracking-wide p-2 text-white rounded">
             Compose Message
           </div>
           <div className="mt-4">
@@ -142,7 +142,7 @@ export class ComposeMail extends Component {
                   onClick={this.saveDraft}
                   type="button"
                   name="draft"
-                  className="bg-blue-500 text-white p-1 focus:bg-blue-700"
+                  className="bg-blue-700 text-white px-8 py-1 focus:bg-blue-500 rounded"
                 >
                   Save as draft
                 </button>
@@ -150,7 +150,7 @@ export class ComposeMail extends Component {
                   name="send"
                   type="submit"
                   value="Send"
-                  className="bg-blue-500 text-white p-1 focus:bg-blue-700"
+                  className="bg-blue-700 text-white focus:bg-blue-500 px-8 py-1 rounded"
                 />
               </div>
             </form>
