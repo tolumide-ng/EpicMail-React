@@ -17,7 +17,8 @@ const ViewSentMessages = ({
     if (
       fetchSentStatus ||
       composeStatus === 'success' ||
-      deleteMessageStatus === 'success'
+      deleteMessageStatus === 'success' ||
+      deleteMessageStatus === 'failure'
     ) {
       fetchSentMessages({ history });
     }
@@ -27,14 +28,17 @@ const ViewSentMessages = ({
     <>
       <div className="flex form_body m-10 mx-auto flex-col p-10 w-10/12 rounded h-full">
         <h1 className="text-center font-bold mb-4 text-xl">Sent Messages</h1>
-        {sentMessages.length > 0 &&
+        {sentMessages.length > 0 ? (
           sentMessages.map(message => (
             <SentMessagesComponent
               key={message.id}
               props={message}
               history={history}
             />
-          ))}
+          ))
+        ) : (
+          <div className="text-center font-strong mt-4">No Messages</div>
+        )}
         {/* {sentMessages.length < 1 && <div className='font-bold text-center'>You do not have any messages at the moment<div/>} */}
       </div>
     </>

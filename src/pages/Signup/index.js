@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import { signupAction } from '../../store/actions/signup';
+import logo from '../../../imgs/molecule.svg';
 
 import SignupSchema from './schema';
-// const redirectToLogin = () => {
-//   <Link to="/login" />;
-// };
 
 export const SignupForm = ({
   isLoading,
@@ -43,11 +41,7 @@ export const SignupForm = ({
                 <span className="text-red-600">C</span>
                 <span id="five">_Mail</span>{' '}
               </div>
-              <img
-                src="../../imgs/molecule.svg"
-                alt="epicmail logo"
-                className="h-12"
-              />
+              <img src={logo} alt="epicmail logo" className="h-12" />
             </div>
             <p className="text-sm">Create your EPIC_Mail account</p>
           </div>

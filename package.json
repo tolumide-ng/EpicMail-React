@@ -12,8 +12,15 @@
     "lint:fix": "prettier-eslint \"**/*.{js,json}\" --write",
     "prettier": "prettier **/*.{js,json} --write",
     "format": "pretty-quick",
-    "test": "jest --coverage --config=jest.config.js",
-    "test:watch": "yarn jest --config=jest.config.js --watchAll --coverage "
+    "test": "jest --coverage",
+    "test:watch": "yarn jest  --watchAll --coverage "
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   },
   "husky": {
     "hooks": {
@@ -71,6 +78,7 @@
     "html-loader": "^0.5.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
+    "jest-localstorage-mock": "^2.4.0",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.18.2",
     "prettier-eslint": "^9.0.0",
@@ -91,6 +99,8 @@
     "formik": "^1.5.8",
     "glob": "^7.1.4",
     "html-webpack-plugin": "^3.2.0",
+    "jsdom": "^15.1.1",
+    "jsdom-global": "^3.0.2",
     "mini-css-extract-plugin": "^0.7.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "prop-types": "^15.7.2",

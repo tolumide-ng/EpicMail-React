@@ -39,6 +39,16 @@ export const setUser = user => ({
   }
 });
 
+export const logOutUser = () => ({
+  type: 'SET_USER',
+  payload: {
+    isStarting: false,
+    status: 'rest',
+    user: {},
+    isAuthenticated: false
+  }
+});
+
 export const setIsStarting = user => ({
   type: 'SET_TOFALSE',
   payload: {

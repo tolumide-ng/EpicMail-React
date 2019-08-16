@@ -1,5 +1,6 @@
 import React from 'react';
-// import jest from 'jest';
+import { MemoryRouter } from 'react-router-dom';
+
 import { render, fireEvent, cleanup, wait } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -9,14 +10,15 @@ import ConnectedSignupForm, {
   mapDispatchToProps
 } from './index';
 import store from '../../store';
-import { sign } from 'crypto';
 
 describe('LoginForm Validation Fails', () => {
   afterEach(cleanup);
   test('should have validation error when firstName field is touched and not complete', async () => {
     const placeholderName = 'firstName';
     const { asFragment, getByPlaceholderText, findByTestId } = render(
-      <SignupForm store={store} />
+      <MemoryRouter>
+        <SignupForm store={store} />
+      </MemoryRouter>
     );
     const input = getByPlaceholderText(placeholderName);
     expect(asFragment).toMatchSnapshot();
@@ -28,7 +30,9 @@ describe('LoginForm Validation Fails', () => {
   test('should have validation error when lastName field is touched and not complete', async () => {
     const placeholderName = 'lastName';
     const { asFragment, getByPlaceholderText, findByTestId } = render(
-      <SignupForm store={store} />
+      <MemoryRouter>
+        <SignupForm store={store} />
+      </MemoryRouter>
     );
     const input = getByPlaceholderText(placeholderName);
     expect(asFragment).toMatchSnapshot();
@@ -40,7 +44,9 @@ describe('LoginForm Validation Fails', () => {
   test('should have validation error when username field is touched and not complete', async () => {
     const placeholderName = 'username';
     const { asFragment, getByPlaceholderText, findByTestId } = render(
-      <SignupForm store={store} />
+      <MemoryRouter>
+        <SignupForm store={store} />
+      </MemoryRouter>
     );
     const input = getByPlaceholderText(placeholderName);
     expect(asFragment).toMatchSnapshot();
@@ -52,7 +58,9 @@ describe('LoginForm Validation Fails', () => {
   test('should have validation error when username field is touched and not complete', async () => {
     const placeholderName = 'email';
     const { asFragment, getByPlaceholderText, findByTestId } = render(
-      <SignupForm store={store} />
+      <MemoryRouter>
+        <SignupForm store={store} />
+      </MemoryRouter>
     );
     const input = getByPlaceholderText(placeholderName);
     expect(asFragment).toMatchSnapshot();
@@ -64,7 +72,9 @@ describe('LoginForm Validation Fails', () => {
   test('should have validation error when password field is touched and not complete', async () => {
     const placeholderName = 'password';
     const { asFragment, getByPlaceholderText, findByTestId } = render(
-      <SignupForm store={store} />
+      <MemoryRouter>
+        <SignupForm store={store} />
+      </MemoryRouter>
     );
     const input = getByPlaceholderText(placeholderName);
     expect(asFragment).toMatchSnapshot();
@@ -76,7 +86,9 @@ describe('LoginForm Validation Fails', () => {
   test('should have validation error when confirmpassword field does not match password', async () => {
     const placeholderName = 'confirmPassword';
     const { asFragment, getByPlaceholderText, findByTestId } = render(
-      <SignupForm store={store} />
+      <MemoryRouter>
+        <SignupForm store={store} />
+      </MemoryRouter>
     );
     const input = getByPlaceholderText(placeholderName);
     expect(asFragment).toMatchSnapshot();
@@ -86,18 +98,16 @@ describe('LoginForm Validation Fails', () => {
   });
 });
 
-describe.skip('SignupForm Validation Success', () => {
+describe('SignupForm Validation Success', () => {
   afterEach(cleanup);
   test('simulate input and click the form submit button', async () => {
     const signUp = jest.fn();
 
-    const {
-      asFragment,
-      getByPlaceholderText,
-      getByTestId,
-      getByText,
-      debug
-    } = render(<SignupForm store={store} signUp={signUp} />);
+    const { asFragment, getByPlaceholderText, getByTestId, getByText } = render(
+      <MemoryRouter>
+        <SignupForm store={store} signUp={signUp} />
+      </MemoryRouter>
+    );
     const firstNameInput = getByPlaceholderText('firstName');
     const lastNameInput = getByPlaceholderText('lastName');
     const usernameInput = getByPlaceholderText('username');
@@ -113,7 +123,10 @@ describe.skip('SignupForm Validation Success', () => {
     const password = 'Password2019#';
     const confirmPassword = 'Password2019#';
 
-    fireEvent.change(firstNameInput, { target: { value: 'firstname' } });
+    fireEvent.change(firstNameInput, {
+      persist: () => {},
+      target: { value: firstname }
+    });
     // debug(firstNameInput);
     expect(firstNameInput.value).toBe(firstname);
 
@@ -132,6 +145,7 @@ describe.skip('SignupForm Validation Success', () => {
     fireEvent.change(confirmPasswordInput, {
       target: { value: confirmPassword }
     });
+
     expect(confirmPasswordInput.value).toBe(confirmPassword);
 
     expect(getByText('Sign up')).toBeTruthy();

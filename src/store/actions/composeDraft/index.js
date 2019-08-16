@@ -31,6 +31,7 @@ export const composeDraftSuccess = composedraftSuccess => ({
   }
 });
 
+/* istanbul ignore next */
 export const composeDraftAction = ({
   recipient: receiverEmail,
   subject,

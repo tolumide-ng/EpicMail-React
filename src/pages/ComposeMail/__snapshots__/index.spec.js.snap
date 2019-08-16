@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compose Mail Form does not fire validation error if there is no validation for the input field 1`] = `[Function]`;

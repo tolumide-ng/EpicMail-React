@@ -4,7 +4,8 @@ import Toastr from 'toastr';
 
 import Main from './main';
 import './styles/main.css';
-import '../node_modules/toastr/build/toastr.css';
+
+import './toastr.css';
 
 Toastr.options = {
   closeButton: true,

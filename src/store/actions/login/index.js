@@ -1,5 +1,6 @@
 import * as Toastr from 'toastr';
 import axios from 'axios';
+import { saveToLocalStorage } from '../../../utils';
 
 import {
   LOGIN_PENDING,
@@ -54,9 +55,12 @@ export const loginAction = ({ userData, history }) => async dispatch => {
 
     const user = data[0];
 
+    saveToLocalStorage(user);
+
     dispatch(loginSuccess(user));
 
     history.push('/compose');
+    return;
   } catch ({ response }) {
     // toast message comes in here for netwrok error
     const message = response.data.error || response;

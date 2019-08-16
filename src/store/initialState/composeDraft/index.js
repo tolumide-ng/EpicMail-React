@@ -1,7 +1,7 @@
 export const composeDraft = {
   composedraftStatus: 'rest',
-  composedraftError: null,
-  composeDraftSuccess: null
+  composedraftSuccess: null,
+  composedraftError: null
 };
 
 export default composeDraft;
