@@ -21,9 +21,9 @@ export class ComposeMail extends Component {
 
   errorMessage = [];
 
-  componentDidMount() {
-    checkLocalStorage({ history: this.props.history });
-  }
+  // componentDidMount() {
+  //   checkLocalStorage({ history: this.props.history });
+  // }
 
   validateForm = ({ errors, recipient }) => {
     let valid = true;
@@ -36,7 +36,7 @@ export class ComposeMail extends Component {
       (valid = false);
     return valid;
   };
-
+  /* istanbul ignore next */
   saveDraft = e => {
     e.preventDefault();
     this.props.composeDraft({
@@ -52,6 +52,7 @@ export class ComposeMail extends Component {
       Toastr.error(this.errorMessage[this.errorMessage.length - 1]);
       return;
     }
+    /* istanbul ignore next */
     this.props.composeMail({
       history,
       wholeMessage: {
@@ -74,6 +75,7 @@ export class ComposeMail extends Component {
             : 'Recipient email must end with @epicmail.com';
         break;
       default:
+        /* istanbul ignore next */
         break;
     }
     this.setState({ formErrors, [name]: [value] });
@@ -101,7 +103,10 @@ export class ComposeMail extends Component {
                     value={this.state.recipient}
                     className="mt-4 w-full h-10 p-2 pl-4 border border-gray-400 text-sm outline-none rounded-lg"
                   />
-                  <div className="text-xs text-red-500 italic font-bold">
+                  <div
+                    className="text-xs text-red-500 italic font-bold"
+                    data-testid="recipientError"
+                  >
                     {recipientError.length > 1 && recipientError}
                   </div>
                 </label>
@@ -109,7 +114,7 @@ export class ComposeMail extends Component {
               <div>
                 <label htmlFor="subject">
                   <input
-                    placeholder="Subject"
+                    placeholder="subject"
                     name="subject"
                     type="text"
                     value={this.state.subject}
@@ -156,11 +161,12 @@ export class ComposeMail extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.authReducer.user
 });
 
-const mapDispatchToProps = dispatch => ({
+/* istanbul ignore next */
+export const mapDispatchToProps = dispatch => ({
   composeMail: ({ history, wholeMessage }) =>
     dispatch(composeMailAction({ history, wholeMessage })),
   composeDraft: wholeMessage => dispatch(composeDraftAction(wholeMessage))
@@ -170,5 +176,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ComposeMail);
-
-// export default ComposeMail;
