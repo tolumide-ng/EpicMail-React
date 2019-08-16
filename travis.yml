@@ -1,12 +1,13 @@
+--- 
+cache: 
+  directories: 
+    - node_modules
+dist: trusty
+install: 
+  - "bundle install"
+  - "npm install"
 language: node_js
-node_js:
-  - 'stable'
-cache:
-  directories:
-    - 'node_modules'
-install:
-  - bundle install
-  - npm install
-script:
-  - npm test -- -u
-  - npm test
+node_js: 
+  - stable
+script: 
+  - "npm test"
