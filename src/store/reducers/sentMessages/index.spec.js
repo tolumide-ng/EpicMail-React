@@ -8,7 +8,7 @@ describe('SentMessages Reducer', () => {
     expect(initialState).toEqual({
       sentMessagesStatus: 'rest',
       sentMessagesError: null,
-      sentMessages: {},
+      sentMessages: [],
       fetchSentMessages: true
     });
   });
