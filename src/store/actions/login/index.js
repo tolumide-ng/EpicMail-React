@@ -1,5 +1,6 @@
 import * as Toastr from 'toastr';
 import axios from 'axios';
+import { saveToLocalStorage } from '../../../utils';
 
 import {
   LOGIN_PENDING,
@@ -53,6 +54,8 @@ export const loginAction = ({ userData, history }) => async dispatch => {
     const { data } = response.data;
 
     const user = data[0];
+
+    saveToLocalStorage(user);
 
     dispatch(loginSuccess(user));
 

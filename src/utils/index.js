@@ -2,13 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import config from '../config';
 
-export const axiosCall = async ({ path, method, payload }) => {
-  const url = `${config.apiUrl}${path}`;
-  const result = await axios[method](url, payload);
+// export const axiosCall = async ({ path, method, payload }) => {
+//   const url = `${config.apiUrl}${path}`;
+//   const result = await axios[method](url, payload);
 
-  const data = result && result.data.data;
-  return data;
-};
+//   const data = result && result.data.data;
+//   return data;
+// };
 
 export const saveToLocalStorage = user => {
   if (user) {
@@ -17,9 +17,11 @@ export const saveToLocalStorage = user => {
 };
 
 export const clearLocalStorage = () => {
+  /* istanbul ignore next */
   localStorage.clear();
 };
 
+/* istanbul ignore next */
 export const emailCheck = email => {
   if (email.endsWith('@epicmail.com')) {
     return email;
@@ -27,6 +29,7 @@ export const emailCheck = email => {
   return `${email}@epicmail.com`;
 };
 
+/* istanbul ignore next */
 export const convertDate = date => {
   if (Math.abs(new Date() - new Date('2019-08-10T21:01:32.362Z')) / 36e5 > 24) {
     return `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`;
@@ -36,10 +39,12 @@ export const convertDate = date => {
   )}hrs ago`;
 };
 
+/* istanbul ignore next */
 export const limitReceiverLenght = email => {
   return email.slice(0, 15);
 };
 
+/* istanbul ignore next */
 export const displaySubject = ({ subject, message }) => {
   if (subject.length > 30) {
     return <strong>{subject.slice(0, 30)}</strong>;
@@ -60,10 +65,11 @@ export const displaySubject = ({ subject, message }) => {
   );
 };
 
+/* istanbul ignore next */
 export const checkLocalStorage = ({ history }) => {
   let user = localStorage.getItem('user');
   if (!user) return history.push('/login');
-
+  /* istanbul ignore next */
   user = JSON.parse(user);
   const { token } = user;
   return token;

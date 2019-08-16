@@ -5,44 +5,30 @@ const NavBar = ({ history }) => (
   <div className="flex w-full justify-center text-lg font-bold tracking-wide mt-2">
     <NavLink
       exact
-      to="/"
-      className="w-1/5 bg-blue-300 text-center p-3 rounded rounded-r-none"
-      activeStyle={{
-        fontWeight: 'bold',
-        color: 'red'
-      }}
-    >
-      Home
-    </NavLink>{' '}
-    <NavLink
-      exact
       to="/compose"
-      className="w-1/5  bg-blue-300 text-center p-3 "
-      activeStyle={{
-        fontWeight: 'bold',
-        color: 'red'
-      }}
+      className="w-1/4  bg-blue-300 text-center p-3 "
+      activeClassName="text-white"
     >
       Compose Mail
     </NavLink>
     <NavLink
       exact
       to="/sent"
-      className="w-1/5 bg-blue-300 text-center p-3 "
-      activeStyle={{
-        fontWeight: 'bold',
-        color: 'red'
-      }}
+      className="w-1/4 bg-blue-300 text-center p-3 "
+      activeClassName="text-white"
     >
       Sent Messages
     </NavLink>
-    {/* <button
+    <button
       type="button"
-      className="w-1/5 bg-blue-300 text-center p-3 rounded rounded-l-none text-lg font-bold tracking-wide justify-end rounded rounded-l-none"
+      onClick={() => {
+        localStorage.clear();
+        window.location.reload();
+      }}
+      className="w-1/4 bg-blue-300 text-center p-3 focus:text-red-200 font-bold"
     >
-      Log Out
-    </button> */}
-    {/* <NavLink to="/message/:id">Specific Message</NavLink> */}
+      Logout
+    </button>
   </div>
 );
 

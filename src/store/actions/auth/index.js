@@ -1,4 +1,4 @@
-import { setUser } from '../signup';
+import { setUser, logOutUser } from '../signup';
 
 export const getUser = () => dispatch => {
   /* istanbul ignore next */
@@ -7,7 +7,7 @@ export const getUser = () => dispatch => {
     user = JSON.parse(user);
     return dispatch(setUser(user));
   }
-  dispatch(setUser(''));
+  dispatch(logOutUser());
 };
 
 export default getUser;

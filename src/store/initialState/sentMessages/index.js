@@ -1,7 +1,7 @@
 export const sentMessages = {
   sentMessagesStatus: 'rest',
   sentMessagesError: null,
-  sentMessages: {},
+  sentMessages: [],
   fetchSentMessages: true
 };
 
