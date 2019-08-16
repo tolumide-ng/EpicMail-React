@@ -38,6 +38,7 @@ export const composeSuccessful = composeSuccess => ({
   }
 });
 
+/* istanbul ignore next */
 export const composeMailAction = ({
   history,
   wholeMessage

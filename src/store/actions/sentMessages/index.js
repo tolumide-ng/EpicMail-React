@@ -38,10 +38,9 @@ export const sentMessagesFailure = sentMessagesError => ({
   }
 });
 
+/* istanbul ignore next */
 export const sentMessagesAction = ({ history = {} }) => async dispatch => {
   dispatch(sentMessagesPending());
-
-  console.log('history of the file', history);
 
   const token = checkLocalStorage({ history });
 
@@ -49,6 +48,7 @@ export const sentMessagesAction = ({ history = {} }) => async dispatch => {
     if (!token) {
       return history.push('/login');
     }
+    /* istanbul ignore next */
     const response = await axios({
       method: 'GET',
       headers: {
@@ -58,8 +58,6 @@ export const sentMessagesAction = ({ history = {} }) => async dispatch => {
     });
 
     const { data } = await response.data;
-
-    console.log('the messages', data);
 
     dispatch(sentMessagesSuccessful(data));
   } catch ({ response }) {

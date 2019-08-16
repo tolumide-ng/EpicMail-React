@@ -7,55 +7,53 @@ describe('ComposeDraft Reducer', () => {
     const initialState = reducer(undefined, {});
     expect(initialState).toEqual({
       composedraftStatus: 'rest',
-      composedraftError: null,
-      composeDraftSuccess: null
+      composedraftSuccess: null,
+      composedraftError: null
     });
   });
 
   test('should handle compose draft pending', () => {
-    expect(
-      reducer(composeDraft, {
-        type: types.COMPOSEDRAFT_PENDING,
-        payload: {
-          composedraftStatus: 'pending'
-        }
-      })
-    ).toEqual({
+    const reduced = reducer(composeDraft, {
+      type: types.COMPOSEDRAFT_PENDING,
+      payload: {
+        composedraftStatus: 'pending'
+      }
+    });
+    expect(reduced).toEqual({
       composedraftStatus: 'pending',
-      composedraftError: null,
-      composeDraftSuccess: null
+      composedraftSuccess: null,
+      composedraftError: null
     });
   });
 
   test('should handle compose draft success', () => {
-    expect(
-      reducer(composeDraft, {
-        type: types.COMPOSEDRAFT_SUCCESSFUL,
-        payload: {
-          composedraftStatus: 'success',
-          composeDraftSuccess: { message: 'this is the message' }
-        }
-      })
-    ).toEqual({
+    const reduced = reducer(composeDraft, {
+      type: types.COMPOSEDRAFT_SUCCESSFUL,
+      payload: {
+        composedraftStatus: 'success',
+        composedraftSuccess: { message: 'this is the message' }
+      }
+    });
+    expect(reduced).toEqual({
       composedraftStatus: 'success',
-      composedraftError: null,
-      composeDraftSuccess: { message: 'this is the message' }
+      composedraftSuccess: { message: 'this is the message' },
+      composedraftError: null
     });
   });
 
   test('should handle compose draft failure', () => {
-    expect(
-      reducer(composeDraft, {
-        type: types.COMPOSEDRAFT_FAILURE,
-        payload: {
-          composedraftStatus: 'fail',
-          composedraftError: 'Not enough message'
-        }
-      })
-    ).toEqual({
+    const reduced = reducer(composeDraft, {
+      type: types.COMPOSEDRAFT_FAILURE,
+      payload: {
+        composedraftStatus: 'fail',
+        composedraftError: 'Not enough message'
+      }
+    });
+
+    expect(reduced).toEqual({
       composedraftStatus: 'fail',
-      composedraftError: 'Not enough message',
-      composeDraftSuccess: null
+      composedraftSuccess: null,
+      composedraftError: 'Not enough message'
     });
   });
 });

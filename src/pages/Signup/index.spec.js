@@ -98,18 +98,12 @@ describe('LoginForm Validation Fails', () => {
   });
 });
 
-describe.skip('SignupForm Validation Success', () => {
+describe('SignupForm Validation Success', () => {
   afterEach(cleanup);
   test('simulate input and click the form submit button', async () => {
     const signUp = jest.fn();
 
-    const {
-      asFragment,
-      getByPlaceholderText,
-      getByTestId,
-      getByText,
-      debug
-    } = render(
+    const { asFragment, getByPlaceholderText, getByTestId, getByText } = render(
       <MemoryRouter>
         <SignupForm store={store} signUp={signUp} />
       </MemoryRouter>
@@ -129,7 +123,10 @@ describe.skip('SignupForm Validation Success', () => {
     const password = 'Password2019#';
     const confirmPassword = 'Password2019#';
 
-    fireEvent.change(firstNameInput, { target: { value: 'firstname' } });
+    fireEvent.change(firstNameInput, {
+      persist: () => {},
+      target: { value: firstname }
+    });
     // debug(firstNameInput);
     expect(firstNameInput.value).toBe(firstname);
 
@@ -148,6 +145,7 @@ describe.skip('SignupForm Validation Success', () => {
     fireEvent.change(confirmPasswordInput, {
       target: { value: confirmPassword }
     });
+
     expect(confirmPasswordInput.value).toBe(confirmPassword);
 
     expect(getByText('Sign up')).toBeTruthy();

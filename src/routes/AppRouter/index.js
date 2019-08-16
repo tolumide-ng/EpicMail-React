@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../../store';
 import Home from '../../pages/Home';
@@ -19,7 +19,7 @@ const AppRouter = withRouter(({ location }) => {
       {noNavBarPaths.includes(location.pathname) ? '' : <Navbar />}
 
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Redirect exact from="/" to="signup" />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/reset" component={RequestReset} />
