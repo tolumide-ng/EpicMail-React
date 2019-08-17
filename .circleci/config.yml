@@ -27,6 +27,11 @@ jobs:
             - v1-dependencies-
 
       - run: yarn install
+      - run:
+          name: 'Run Jest and Collect Coverage Reports'
+          command: yarn jest --u --collectCoverage=true
+      - store_artifacts:
+          path: coverage
 
       - save_cache:
           paths:
