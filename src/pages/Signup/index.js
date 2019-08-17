@@ -158,7 +158,6 @@ export const SignupForm = ({
                       : ''
                   }`}
                 />
-                {console.log(errors.confirmPassword)}
                 {errors.confirmPassword && touched.confirmPassword ? (
                   <div
                     className="text-red-400 text-xs"
