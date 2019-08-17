@@ -13,7 +13,8 @@
     "prettier": "prettier **/*.{js,json} --write",
     "format": "pretty-quick",
     "test": "jest --verbose --coverage ./src",
-    "test:watch": "yarn jest  --watchAll --coverage "
+    "test:watch": "yarn jest  --watchAll --coverage",
+    "coverage": "jest --forceExit --coverage ./src && cat ./coverage/lcov.info | coveralls"
   },
   "jest": {
     "testEnvironment": "jsdom",
