@@ -31,9 +31,9 @@ export const SignupForm = ({
       }}
     >
       {({ errors, touched, isSubmitting }) => (
-        <div className="flex form_body m-16 mx-auto flex-col p-10 w-7/12 rounded">
-          <div className="ml-10 mb-10 w-100">
-            <div className="flex flex-row justify-between mr-4">
+        <div className="flex form_body m-16 mx-auto flex-col p-10 lg:w-10/12 w-11/12 rounded">
+          <div className=" mb-10 w-100">
+            <div className="flex flex-row justify-between">
               <div className="tracking-widest text-3xl">
                 <span className="text-indigo-800 ">E</span>
                 <span className="text-orange-600">P</span>
@@ -41,19 +41,21 @@ export const SignupForm = ({
                 <span className="text-red-600">C</span>
                 <span id="five">_Mail</span>{' '}
               </div>
-              {/* <img src={logo} alt="epicmail logo" className="h-12" /> */}
+              <img src={logo} alt="epicmail logo" className="h-12" />
             </div>
             <p className="text-sm">Create your EPIC_Mail account</p>
           </div>
-          <Form className="flex flex-col justify-center w-100">
-            <div className="flex ml-6 mb-10 w-100">
-              <div className=" w-5/6">
+          <Form className="flex flex-col justify-center w-full justify-between">
+            <div className="flex flex-col text-center lg:flex-row lg:mb-10 w-full justify-between">
+              <div className="w-full lg:w-3/6 lg:text-left mb-10 lg:mb-0">
                 <Field
                   name="firstName"
                   placeholder="firstName"
                   type="input"
                   className={`${'w-11/12 h-8 p-2 border border-gray-400 text-sm outline-none rounded'} ${
-                    errors.firstName ? 'border-red-700' : ''
+                    errors.firstName && touched.firstName
+                      ? 'border-red-700'
+                      : ''
                   }`}
                 />
                 {errors.firstName && touched.firstName ? (
@@ -66,13 +68,13 @@ export const SignupForm = ({
                 ) : null}
               </div>
 
-              <div className="w-5/6">
+              <div className="w-full lg:w-3/6 lg:text-right mb-10 lg:mb-0">
                 <Field
                   name="lastName"
                   placeholder="lastName"
                   type="input"
                   className={`${'w-11/12 h-8 p-2 border border-gray-400 text-sm outline-none rounded'} ${
-                    errors.lastName ? 'border-red-500' : ''
+                    errors.lastName && touched.lastName ? 'border-red-500' : ''
                   }`}
                 />
                 {errors.lastName && touched.lastName ? (
@@ -86,13 +88,13 @@ export const SignupForm = ({
               </div>
             </div>
 
-            <div className="w-100 ml-6 mb-10 w-100">
+            <div className="w-full text-center mb-10 w-100 lg:text-left">
               <Field
                 name="username"
                 placeholder="username"
                 type="input"
-                className={`${'w-11/12 h-8 p-2 border border-gray-400 text-sm outline-none rounded'} ${
-                  errors.username ? 'border-red-500' : ''
+                className={`${'w-11/12 lg:w-full h-8 p-2 border border-gray-400 text-sm outline-none rounded'} ${
+                  errors.username && touched.username ? 'border-red-500' : ''
                 }`}
               />
               {errors.username && touched.username ? (
@@ -105,13 +107,13 @@ export const SignupForm = ({
               ) : null}
             </div>
 
-            <div className="w-100 ml-6 mb-10 w-100">
+            <div className="w-full text-center mb-10 w-100 lg:text-left">
               <Field
                 name="email"
                 placeholder="email"
                 type="email"
-                className={`${'w-11/12 h-8 p-2 border border-gray-400 text-sm outline-none rounded'} ${
-                  errors.email ? 'border-red-500' : ''
+                className={`${'w-11/12 lg:w-full h-8 p-2 border border-gray-400 text-sm outline-none rounded'} ${
+                  errors.email && touched.email ? 'border-red-500' : ''
                 }`}
               />
               {errors.email && touched.email ? (
@@ -125,14 +127,14 @@ export const SignupForm = ({
               ) : null}
             </div>
 
-            <div className="flex ml-6 mb-10 w-100">
-              <div className=" w-5/6">
+            <div className="flex flex-col text-center lg:flex-row lg:mb-10 w-full justify-between">
+              <div className="w-full lg:w-3/6 lg:text-left mb-10 lg:mb-0">
                 <Field
                   name="password"
                   placeholder="password"
                   type="password"
                   className={`${'w-11/12 h-8 p-2 border border-gray-400 text-sm outline-none rounded'} ${
-                    errors.password ? 'border-red-500' : ''
+                    errors.password && touched.password ? 'border-red-500' : ''
                   }`}
                 />
                 {errors.password && touched.password ? (
@@ -145,15 +147,18 @@ export const SignupForm = ({
                 ) : null}
               </div>
 
-              <div className="w-5/6">
+              <div className="w-full lg:w-3/6 lg:text-right mb-10 lg:mb-0">
                 <Field
                   name="confirmPassword"
                   placeholder="confirmPassword"
                   type="password"
                   className={`${'w-11/12 h-8 p-2 border border-gray-400 text-sm outline-none rounded'} ${
-                    errors.confirmPassword ? 'border-red-500' : ''
+                    errors.confirmPassword && touched.confirmPassword
+                      ? 'border-red-500'
+                      : ''
                   }`}
                 />
+                {console.log(errors.confirmPassword)}
                 {errors.confirmPassword && touched.confirmPassword ? (
                   <div
                     className="text-red-400 text-xs"

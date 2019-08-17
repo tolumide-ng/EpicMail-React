@@ -21,11 +21,10 @@ const SignupSchema = Yup.object().shape({
     .min(6, 'minumum of 6 characters')
     .matches(
       /^(?=.{10,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/,
-      'Password must contain atleast one special character and uppercase letter'
+      'Password must be 8 characters long with atleast one special character and uppercase letter'
     )
     .required('Required'),
   confirmPassword: Yup.string()
-    .trim()
     .oneOf([Yup.ref('password'), null], "Passwords don't match!")
     .required('Required')
 });
