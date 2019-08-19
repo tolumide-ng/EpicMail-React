@@ -1,14 +1,10 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
-import { render, fireEvent, cleanup, wait } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import ConnectedSignupForm, {
-  SignupForm,
-  mapStateToProps,
-  mapDispatchToProps
-} from './index';
+import { SignupForm, mapStateToProps, mapDispatchToProps } from './index';
 import store from '../../store';
 
 describe('LoginForm Validation Fails', () => {
@@ -149,14 +145,6 @@ describe('SignupForm Validation Success', () => {
     expect(confirmPasswordInput.value).toBe(confirmPassword);
 
     expect(getByText('Sign up')).toBeTruthy();
-
-    // fireEvent.submit(submitButton);
-
-    // expect(getByText('Signing in')).toBeTruthy();
-    // expect(asFragment).toMatchSnapshot();
-    // await wait(() => {
-    //   expect(signUp).toHaveBeenCalled();
-    // });
   });
 });
 
