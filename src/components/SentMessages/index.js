@@ -1,7 +1,7 @@
-import React from './node_modules/react';
-import { connect } from './node_modules/react-redux';
-import { BrowserHistory } from './node_modules/react-router-dom';
-import { Link } from './node_modules/react-router-dom';
+import React from 'react';
+import { connect } from 'react-redux';
+import { BrowserHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { deleteMessageAction } from '../../store/actions/deleteMessage';
 import { fetchSpecificSentMessageAction } from '../../store/actions/specificSentMessage';
 import { limitReceiverLenght, convertDate, displaySubject } from '../../utils';
