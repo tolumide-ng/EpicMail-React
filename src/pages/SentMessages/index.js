@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { sentMessagesAction } from '../../store/actions/sentMessages';
-import SentMessagesComponent from '../../components/sentMessages';
+import SentMessagesComponent from '../../components/SentMessages';
 
 const ViewSentMessages = ({
   user,

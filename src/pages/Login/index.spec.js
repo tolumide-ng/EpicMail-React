@@ -5,6 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 import configureMockStore from 'redux-mock-store';
 
 import { LoginForm, mapStateToProps, mapDispatchToProps } from './index';
+
 import store from '../../store';
 
 // import jest from 'jest';
