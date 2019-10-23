@@ -2,6 +2,11 @@
 
 [![CircleCI](https://circleci.com/gh/tolumide-ng/EpicMail-React/tree/develop.svg?style=svg)](https://circleci.com/gh/tolumide-ng/EpicMail-React/tree/develop) [![Coverage Status](https://coveralls.io/repos/github/tolumide-ng/EpicMail-React/badge.svg?branch=develop)](https://coveralls.io/github/tolumide-ng/EpicMail-React?branch=develop)
 
+
+HEROKU ===>>>>> **NODE_ENV: development**
+
+
+
 ## About this Project
 
 EpicMail enables users to send emails to other users of the application
